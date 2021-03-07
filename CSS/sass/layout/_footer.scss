@@ -1,0 +1,11 @@
+footer {
+    clear: both;
+    display: flex;
+    ul {
+        display: flex;
+        justify-content: space-around;
+    }
+    li {
+        margin-left: 5px;
+    }
+}

@@ -1,0 +1,22 @@
+nav {
+    & ul {
+        display: flex;
+        justify-content: flex-end;
+        li {
+            margin: 20px 0 10px 0;
+            vertical-align: bottom;
+            margin-right: 1rem;
+            padding-top: 4rem;
+            transition: transform 0.5s;
+        }
+        & li:hover {
+            transform: scale(1.2);
+        }
+        li:last-child {
+            margin: -10px 10px 0 0;
+        }
+        & .panierImg {
+            width: 50px;
+        }
+    }
+}
