@@ -1,0 +1,25 @@
+label,
+#option,
+#panier {
+    margin: 0 0 20px 10px;
+}
+
+select {
+    font-family: 'aaarghnormal';
+    background-color: $color-back;
+    padding: 3px;
+}
+
+#panier {
+    padding: 5px 2px 5px 2px;
+    font-family: 'aaarghnormal';
+    font-weight: bold;
+    color: $color-font-foot;
+    background-color: $color-prim;
+    box-shadow: 2px 2px 1px $color-sec;
+    border: 0;
+    transition: transform 0.5s;
+    &:hover {
+        transform: scale(1.2) translate(10%, 10%);
+    }
+}

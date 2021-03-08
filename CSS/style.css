@@ -234,10 +234,110 @@ aside .tarifTitre {
 
 aside .description {
   margin: 0 0 20px 10px;
+  line-height: 150%;
 }
 
 aside .tarif {
   width: 80%;
   margin: 0 0 20px 10px;
+}
+
+section {
+  border: 1px solid #925DF5;
+}
+
+section article {
+  width: 10%;
+}
+
+section article .produitImg {
+  width: 120px;
+  height: 120px;
+}
+
+section aside {
+  border: none;
+}
+
+section aside h3 {
+  font-size: 1.2rem;
+  margin: 0 0 20px 0;
+}
+
+section aside .descriptionTitre,
+section aside .tarifTitre {
+  text-decoration: underline;
+  margin: 0 0 20px 0;
+}
+
+section aside .description {
+  margin: 0 0 20px 0;
+  line-height: 150%;
+}
+
+section aside .tarif {
+  width: 80%;
+  margin: 0 0 20px 0;
+}
+
+section aside #panier {
+  margin: 0;
+}
+
+.formCommande {
+  margin-right: auto;
+  margin-left: auto;
+  display: table;
+}
+
+.formCommande .formulaire {
+  display: table-row;
+}
+
+.formCommande label,
+.formCommande input {
+  display: table-cell;
+  margin-bottom: 15px;
+}
+
+.formCommande label {
+  padding-right: 15px;
+}
+
+.formCommande .commande {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+label,
+#option,
+#panier {
+  margin: 0 0 20px 10px;
+}
+
+select {
+  font-family: 'aaarghnormal';
+  background-color: #F3E9F1;
+  padding: 3px;
+}
+
+#panier {
+  padding: 5px 2px 5px 2px;
+  font-family: 'aaarghnormal';
+  font-weight: bold;
+  color: #fff;
+  background-color: #925DF5;
+  -webkit-box-shadow: 2px 2px 1px #E68A0A;
+          box-shadow: 2px 2px 1px #E68A0A;
+  border: 0;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+#panier:hover {
+  -webkit-transform: scale(1.2) translate(10%, 10%);
+          transform: scale(1.2) translate(10%, 10%);
 }
 /*# sourceMappingURL=style.css.map */

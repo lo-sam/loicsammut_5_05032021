@@ -1,0 +1,54 @@
+section {
+    border: 1px solid $color-prim;
+    article {
+        width: 10%;
+        .produitImg {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    aside {
+        border: none;
+        h3 {
+            font-size: 1.2rem;
+            margin: 0 0 20px 0;
+        }
+        .descriptionTitre,
+        .tarifTitre {
+            text-decoration: underline;
+            margin: 0 0 20px 0;
+        }
+        .description {
+            margin: 0 0 20px 0;
+            line-height: 150%;
+        }
+        .tarif {
+            width: 80%;
+            margin: 0 0 20px 0;
+        }
+        #panier {
+            margin: 0;
+        }
+    }
+}
+
+.formCommande {
+    margin-right: auto;
+    margin-left: auto;
+    display: table;
+    .formulaire {
+        display: table-row;
+    }
+    label,
+    input {
+        display: table-cell;
+        margin-bottom: 15px;
+    }
+    label {
+        padding-right: 15px;
+    }
+    .commande {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="https://kit.fontawesome.com/a650986bb4.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Produit</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="enTete">
+                <a href="index.html">
+                    <div id="logo">
+                        <img class="logoImg" src="images/caddie.png" alt="logo de l'entreprise, un caddie de course">
+                        <h1>Origift</h1>
+                    </div>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="produit.html">Produits</a></li>
+                        <a href="panier.html">
+                            <li>
+                                <img class="panierImg" src="images/panier.png" alt="un panier de course">
+                            </li>
+                        </a>
+                    </ul>
+                </nav>
+            </div>
+            <img class="separateur" src="images/line.png" alt="ligne de séparation">
+        </header>
+
+        <main>
+
+            <h2>Votre panier:</h2>
+            <section>
+                <article>
+                    <img class="produitImg" src="images/teddy_1.jpg" alt="p1">
+                </article>
+                <aside>
+                    <h3>produits 1</h3>
+                    <span class="tarifTitre">Prix:</span>
+                    <span class="tarif">10 euros</span>
+                    <input type="submit" name="panier" id="panier" value="Supprimer du panier">
+                </aside>
+            </section>
+
+            <form action="" method="GET" class="formCommande">
+                <div class="formulaire">
+                    <label for="firstName">Prénom:</label>
+                    <input type="text" id="firstName" pattern="[A-Z, a-z]{3}">
+                </div>
+                <div class="formulaire">
+                    <label for="lastName">Nom:</label>
+                    <input type="text" id="lastName" pattern="[A-Z, a-z]{3}">
+                </div>
+                <div class="formulaire">
+                    <label for="adresse">Adresse:</label>
+                    <input type="text" id="adresse" pattern="[A-Z, a-z]{3}">
+                </div>
+                <div class="formulaire">
+                    <label for="zipCode">Code Postal:</label>
+                    <input type="text" id="zipCode" pattern="[0-9]{5}">
+                </div>
+                <div class="formulaire">
+                    <label for="mail">Adresse Mail:</label>
+                    <input type="email" id="mail">
+                </div>
+                <div class="formulaire">
+                    <label for="phoneNumber">Téléphone:</label>
+                    <input type="text" id="phoneNumber" pattern="[0-9]{10}">
+                </div>
+                <div class="formulaire">
+                    <input type="submit" name="commande" id="commande" value="Passer commande">
+                </div>
+            </form>
+
+        </main>
+
+        <footer>
+            <ul>
+                <li><a href="index.html">Mentions légales</a></li>
+                <li><a href="index.html">Contact</a></li>
+            </ul>
+            <ul>
+                <li><a href="index.html">Twitter</a></li>
+                <li><a href="index.html">Facebook</a></li>
+                <li><a href="index.html">Instagram</a></li>
+            </ul>
+        </footer>
+    </div>
+
+
+</body>
+
+</html>
