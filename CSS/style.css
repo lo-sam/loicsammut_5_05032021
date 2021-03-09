@@ -242,45 +242,45 @@ aside .tarif {
   margin: 0 0 20px 10px;
 }
 
-section {
+section .articlePanier {
   border: 1px solid #925DF5;
 }
 
-section article {
+section .articlePanier article {
   width: 10%;
 }
 
-section article .produitImg {
+section .articlePanier article .produitImg {
   width: 120px;
   height: 120px;
 }
 
-section aside {
+section .articlePanier aside {
   border: none;
 }
 
-section aside h3 {
+section .articlePanier aside h3 {
   font-size: 1.2rem;
   margin: 0 0 20px 0;
 }
 
-section aside .descriptionTitre,
-section aside .tarifTitre {
+section .articlePanier aside .descriptionTitre,
+section .articlePanier aside .tarifTitre {
   text-decoration: underline;
   margin: 0 0 20px 0;
 }
 
-section aside .description {
+section .articlePanier aside .description {
   margin: 0 0 20px 0;
   line-height: 150%;
 }
 
-section aside .tarif {
+section .articlePanier aside .tarif {
   width: 80%;
   margin: 0 0 20px 0;
 }
 
-section aside #panier {
+section .articlePanier aside #panier {
   margin: 0;
 }
 
