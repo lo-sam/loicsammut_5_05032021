@@ -3,40 +3,37 @@ h2 {
     font-size: 1.2rem;
 }
 
-section {
-    clear: both;
-    margin: 0 auto 50px auto;
-    display: flex;
-}
-
-article {
-    width: 20%;
-    margin: 30px;
-    float: left;
-    .produitImg {
-        width: 270px;
-        height: 270px;
-    }
-}
-
-aside {
-    margin: 30px;
-    border: 1px solid $color-prim;
-    h3 {
-        font-size: 1.2rem;
-        margin: 45px 0 20px 10px;
-    }
-    .descriptionTitre,
-    .tarifTitre {
-        text-decoration: underline;
-        margin: 0 0 20px 10px;
-    }
-    .description {
-        margin: 0 0 20px 10px;
-        line-height: 150%;
-    }
-    .tarif {
-        width: 80%;
-        margin: 0 0 20px 10px;
+#produits {
+    margin: 30px 0 50px 0;
+    ul li {
+        margin: 10px auto 10px auto;
+        width: 50%;
+        padding: 10px;
+        border: 1px $color-prim solid;
+        transition: transform 0.5s;
+        background-color: $color-back;
+        &:hover {
+            transform: scale(1.2);
+        }
+        a {
+            display: flex;
+            .picted {
+                width: 270px;
+                height: 270px;
+            }
+            .info {
+                padding: 20px;
+                .name {
+                    padding: 10px 0 10px 10px;
+                }
+                .description,
+                .descriptionTitle {
+                    padding: 10px 0 0 10px;
+                }
+                .price {
+                    padding: 20px 0 0 10px;
+                }
+            }
+        }
     }
 }
