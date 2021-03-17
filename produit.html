@@ -23,12 +23,11 @@
                 <nav>
                     <ul>
                         <li><a href="index.html">Accueil</a></li>
-                        <li><a href="produit.html">Produits</a></li>
-                        <a href="panier.html">
-                            <li>
-                                <img class="panierImg" src="images/panier.png" alt="un panier de course">
-                            </li>
-                        </a>
+
+                        <li>
+                            <a href="panier.html"><img class="panierImg" src="images/panier.png" alt="un panier de course"></a>
+                        </li>
+
                     </ul>
                 </nav>
             </div>
@@ -37,19 +36,10 @@
 
         <main>
             <h2>Le produit:</h2>
-            <div id="produit">
-
+            <div id="item">
+                <!-- contenu du script JS -->
             </div>
-
-            <label for="option">Option disponible:</label>
-            <select name="option" id="option">
-                        <option value="">--Sélectionnez une option--</option>
-                        <option value="opt1">Option 1</option>
-                        <option value="opt2">Option 2</option>
-                        <option value="opt3">Option 2</option>
-                    </select>
-            <input type="submit" name="panier" id="panier" value="Ajouter au panier">
-            <script src="produit.js"></script>
+            <script src="produitSelect.js"></script>
         </main>
 
         <footer>

@@ -1,10 +1,43 @@
-label,
-#option,
-#panier {
-    margin: 0 0 20px 10px;
+#item {
+    margin: 30px 0 50px 0;
+    #oursItem {
+        margin: 10px auto 10px auto;
+        width: 70%;
+        padding: 10px;
+        border: 1px $color-prim solid;
+        transition: transform 0.5s;
+        background-color: $color-back;
+        display: flex;
+    }
+    .picted {
+        width: 400px;
+        height: 400px;
+    }
+    .info {
+        padding: 0 20px;
+        .name {
+            padding: 10px 0 10px 10px;
+        }
+        .description,
+        .descriptionTitle {
+            padding: 10px 0 0 10px;
+        }
+        .description {
+            padding-bottom: 30px;
+        }
+        .price {
+            padding: 20px 0 0 10px;
+        }
+    }
 }
 
-select {
+#optionLabel,
+#colors,
+#panier {
+    margin: 10px 0 20px 10px;
+}
+
+#colors {
     font-family: 'aaarghnormal';
     background-color: $color-back;
     padding: 3px;
