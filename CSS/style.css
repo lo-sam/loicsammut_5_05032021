@@ -315,13 +315,20 @@ section .articlePanier aside #panier {
 
 #item {
   margin: 30px 0 50px 0;
+  border: 1px #925DF5 solid;
+  width: 70%;
+  margin: 10px auto 10px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
 }
 
 #item #oursItem {
-  margin: 10px auto 10px auto;
-  width: 70%;
   padding: 10px;
-  border: 1px #925DF5 solid;
   -webkit-transition: -webkit-transform 0.5s;
   transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
@@ -370,7 +377,17 @@ section .articlePanier aside #panier {
   padding: 3px;
 }
 
-#panier {
+#bouton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-right: 15%;
+}
+
+#bouton #panier {
   padding: 5px 2px 5px 2px;
   font-family: 'aaarghnormal';
   font-weight: bold;
@@ -385,7 +402,7 @@ section .articlePanier aside #panier {
   transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
-#panier:hover {
+#bouton #panier:hover {
   -webkit-transform: scale(1.2) translate(10%, 10%);
           transform: scale(1.2) translate(10%, 10%);
 }

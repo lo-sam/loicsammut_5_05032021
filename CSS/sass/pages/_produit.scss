@@ -1,10 +1,14 @@
 #item {
     margin: 30px 0 50px 0;
+    border: 1px $color-prim solid;
+    width: 70%;
+    margin: 10px auto 10px auto;
+    display: flex;
+    flex-direction: column-reverse;
     #oursItem {
-        margin: 10px auto 10px auto;
-        width: 70%;
+        // margin: 10px auto 10px auto;
+        // width: 70%;
         padding: 10px;
-        border: 1px $color-prim solid;
         transition: transform 0.5s;
         background-color: $color-back;
         display: flex;
@@ -43,16 +47,21 @@
     padding: 3px;
 }
 
-#panier {
-    padding: 5px 2px 5px 2px;
-    font-family: 'aaarghnormal';
-    font-weight: bold;
-    color: $color-font-foot;
-    background-color: $color-prim;
-    box-shadow: 2px 2px 1px $color-sec;
-    border: 0;
-    transition: transform 0.5s;
-    &:hover {
-        transform: scale(1.2) translate(10%, 10%);
+#bouton {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 15%;
+    #panier {
+        padding: 5px 2px 5px 2px;
+        font-family: 'aaarghnormal';
+        font-weight: bold;
+        color: $color-font-foot;
+        background-color: $color-prim;
+        box-shadow: 2px 2px 1px $color-sec;
+        border: 0;
+        transition: transform 0.5s;
+        &:hover {
+            transform: scale(1.2) translate(10%, 10%);
+        }
     }
 }
