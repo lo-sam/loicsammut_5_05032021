@@ -1,15 +1,12 @@
 // récupération de l'ID dans l'URL //
 let idUrl = window.location.search.substr(4);
-console.log(idUrl);
 
 // récupération du produit à qui appartient l'ID dans la base de l'API //
 const promise = fetch('http://localhost:3000/api/teddies/' + idUrl);
 promise.then(response => {
     const oursSelect = response.json();
-    console.log(oursSelect);
 
     oursSelect.then((ours) => {
-        console.log(ours);
 
         // création du contenant où l'article apparaitra //
         let bear = document.createElement('div');
@@ -45,7 +42,7 @@ promise.then(response => {
         let oursOptionSelect = document.createElement('select');
         oursOptionSelect.id = 'colors';
         oursOptionSelect.setAttribute('name', ours.colors);
-        console.log(ours.colors);
+
         // boucle où on ajoute un champ couleur pour chaque ligne du tableau colors //
         for (let i = 0; i < ours.colors.length; i++) {
             let option = document.createElement('option');
@@ -75,74 +72,95 @@ promise.then(response => {
         document.getElementById('item').appendChild(bear);
 
 
+        // Evenement d'ajout au panier
+        const panier = document.getElementById('panier');
+        panier.addEventListener('click', (event) => {
+            event.preventDefault();
 
+            //  produit que l'on crée dans le tableau panier
+            let produit = {
+                nom: ours.name,
+                image: ours.imageUrl,
+                couleur: oursOptionSelect.value,
+                prix: ours.price,
+                quantité: 1
+            };
+            let produits = JSON.parse(localStorage.getItem('panier'));
 
+            // function d'envois au panier
+            const EnvoisDansLePanier = () => {
+                produits.push(produit);
+                localStorage.setItem('panier', JSON.stringify(produits));
+            };
 
+            //si produit dans storage (produits=true)
+            if (produits) {
+                for (let i = 0; i < produits.length; i++) {
+                    let nomSelect = produits[i].nom;
+                    let couleurSelect = produits[i].couleur;
 
-        /*
-                //////////// PANIER ////////////
-
-
-                // on récupère l'évènement click du bouton AJOUTER AU PANIER
-                let panier = document.getElementById('panier')
-                panier.addEventListener('click', function() {
-                    //incrémente le numéro de l'article dans le panier
-                    let key = localStorage.length + 1;
-                    //on crée un objet avec le nom, l image et le prix du produit ajouté au panier
-                    let produit = {
-                            nom: ours.name,
-                            img: ours.imageUrl,
-                            prix: ours.price,
-                            id: idUrl
-                        }
-                        //on remet en ligne le résultat JSON
-                    let produitLine = JSON.stringify(produit);
-                    //on ajoute un article dans le local storage
-                    localStorage.setItem(`Article ${key}`, produitLine);
-                    //on recharge la page
-                    document.location.reload();
-                });*/
-
-        //////////// TEST PANIER ////////////
-
-
-        // on récupère l'évènement click du bouton AJOUTER AU PANIER
-        let panier = document.getElementById('panier')
-        panier.addEventListener('click', function() {
-            //incrémente le numéro de l'article dans le panier
-            let key = localStorage.length + 1;
-            //on crée un objet avec le nom, l image et le prix du produit ajouté au panier
-
-            if (localStorage.getItem(ours.name) === null) {
-                let produit = {
-                        nom: ours.name,
-                        img: ours.imageUrl,
-                        prix: ours.price,
-                        id: idUrl,
-                        quantité: 1
+                    // Si le nom de l'article est déjà dans le panier et que la couleur est identique
+                    if ((ours.name && oursOptionSelect.value) === (nomSelect && couleurSelect)) {
+                        console.log('meme nom et meme couleur');
+                        //on ajoute 1 à sa quantité
+                        produits[i].quantité = produits[i].quantité + 1;
+                        localStorage.setItem('panier', JSON.stringify(produits));
+                        break;
                     }
-                    //on remet en ligne le résultat JSON
-                let produitLine = JSON.stringify(produit);
-                //on ajoute un article dans le local storage
-                localStorage.setItem(ours.name, produitLine);
+                    //si meme nom mais couleur differente, on ajoute l article au panier
+                    if (ours.name === nomSelect) {
+                        if (oursOptionSelect.value !== couleurSelect) {
+                            EnvoisDansLePanier();
+                            console.log('meme nom mais couleur differente');
+                            break;
+                        }
+                        break;
+                    }
+                    if (ours.name !== nomSelect) {
+                        console.log('pas meme nom');
+                        EnvoisDansLePanier();
+                        break;
+                    }
 
-            } else {
-                produit = JSON.parse(localStorage.getItem(ours.name));
-                console.log(produit)
-                Object.entries(produit).forEach(([quantité]) => {
-
-                    quantité = quantité + 1;
-                });
-
-                //on remet en ligne le résultat JSON
-                let produitLine = JSON.stringify(produit);
-                //on ajoute un article dans le local storage
-                localStorage.setItem(ours.name, produitLine);
-
+                }
             }
+            // si pas produit dans storage
+            else {
+                produits = [];
+                console.log('création du panier');
+                EnvoisDansLePanier();
+            }
+
             //on recharge la page
             // document.location.reload();
-        });
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
