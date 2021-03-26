@@ -83,7 +83,7 @@ promise.then(response => {
                 image: ours.imageUrl,
                 couleur: oursOptionSelect.value,
                 prix: ours.price,
-                quantité: 1
+                quantité: 1,
             };
             let produits = JSON.parse(localStorage.getItem('panier'));
 
@@ -99,24 +99,21 @@ promise.then(response => {
                     let nomSelect = produits[i].nom;
                     let couleurSelect = produits[i].couleur;
 
-                    // Si le nom de l'article est déjà dans le panier et que la couleur est identique
                     if ((ours.name && oursOptionSelect.value) === (nomSelect && couleurSelect)) {
+                        // Si le nom de l'article est déjà dans le panier et que la couleur est identique
                         console.log('meme nom et meme couleur');
                         //on ajoute 1 à sa quantité
                         produits[i].quantité = produits[i].quantité + 1;
                         localStorage.setItem('panier', JSON.stringify(produits));
                         break;
-                    }
-                    //si meme nom mais couleur differente, on ajoute l article au panier
-                    if (ours.name === nomSelect) {
-                        if (oursOptionSelect.value !== couleurSelect) {
-                            EnvoisDansLePanier();
-                            console.log('meme nom mais couleur differente');
-                            break;
-                        }
+                    } else if ((ours.name === nomSelect) && (couleurSelect !== oursOptionSelect.value)) {
+                        //si meme nom mais couleur differente, on ajoute l article au panier
+                        EnvoisDansLePanier();
+                        console.log('meme nom mais couleur differente');
+                        console.log(couleurSelect);
                         break;
-                    }
-                    if (ours.name !== nomSelect) {
+                    } else if (ours.name !== nomSelect) {
+                        //si l'article est différent
                         console.log('pas meme nom');
                         EnvoisDansLePanier();
                         break;
@@ -170,3 +167,14 @@ promise.then(response => {
 
 
 });
+
+
+// Affichage Panier
+let produits = JSON.parse(localStorage.getItem('panier'));
+
+for (let i = 0; i < produits.length; i++) {
+    let nbArticle = 0 + produits[i].quantité;
+    let nbCmde = document.getElementById('nbCmde');
+    nbCmde.style.visibility = 'visible';
+    nbCmde.textContent = nbArticle;
+}

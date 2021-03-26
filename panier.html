@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="CSS/style.css">
     <script src="https://kit.fontawesome.com/a650986bb4.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="storage.js"></script>
     <title>Page Produit</title>
 </head>
 
@@ -23,10 +22,11 @@
                 </a>
                 <nav>
                     <ul>
-                        <li><a href="index.html">Accueil</a></li>
+                        <li id="liAcc"><a href="index.html">Accueil</a></li>
 
-                        <li>
+                        <li id="liPanier">
                             <a href="panier.html"><img class="panierImg" src="images/panier.png" alt="un panier de course"></a>
+                            <span id="nbCmde"></span>
                         </li>
 
                     </ul>
@@ -39,7 +39,7 @@
 
             <section class="articlePanier">
                 <h2 id="titrePanier">Votre panier:</h2>
-                <div id="produits">
+                <div id="produitsPanier">
                     <ul id="panierClient">
 
                     </ul>
@@ -47,6 +47,7 @@
                 <div id="clear">
 
                 </div>
+                <script src="storage.js"></script>
 
                 <!--
             
@@ -83,15 +84,6 @@
         </main>
 
         <footer>
-            <ul>
-                <li><a href="index.html">Mentions légales</a></li>
-                <li><a href="index.html">Contact</a></li>
-            </ul>
-            <ul>
-                <li><a href="index.html">Twitter</a></li>
-                <li><a href="index.html">Facebook</a></li>
-                <li><a href="index.html">Instagram</a></li>
-            </ul>
         </footer>
     </div>
 

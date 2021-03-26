@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -147,6 +148,8 @@ nav ul {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  position: absolute;
+  width: 100%;
 }
 
 nav ul li {
@@ -165,12 +168,30 @@ nav ul li:hover {
           transform: scale(1.2);
 }
 
-nav ul li:last-child {
-  margin: -10px 10px 0 0;
+nav ul #liAcc {
+  position: absolute;
+  left: 80%;
 }
 
-nav ul .panierImg {
+nav ul #liPanier {
+  margin: -10px 10px 0 0;
+  position: absolute;
+  left: 90%;
+}
+
+nav ul #liPanier .panierImg {
   width: 50px;
+}
+
+nav ul #liPanier #nbCmde {
+  left: 55%;
+  top: 90px;
+  position: absolute;
+  background-color: salmon;
+  color: white;
+  border-radius: 50%;
+  padding: 3px 5px;
+  visibility: hidden;
 }
 
 footer {
@@ -246,71 +267,74 @@ h2 {
   padding: 20px 0 0 10px;
 }
 
-section .articlePanier {
-  border: 1px solid #925DF5;
+#panierClient li {
+  margin: 10px auto 10px auto;
+  width: 70%;
+  padding: 10px;
+  border: 1px #925DF5 solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-section .articlePanier article {
-  width: 10%;
+#panierClient li .pictedPanier {
+  width: 150px;
 }
 
-section .articlePanier article .produitImg {
-  width: 120px;
-  height: 120px;
+#panierClient li .infoPanier {
+  padding: 20px;
 }
 
-section .articlePanier aside {
-  border: none;
+#panierClient li .infoPanier .namePanier,
+#panierClient li .infoPanier .couleurPanier,
+#panierClient li .infoPanier .pricePanier {
+  padding: 10px 0 0 10px;
 }
 
-section .articlePanier aside h3 {
-  font-size: 1.2rem;
-  margin: 0 0 20px 0;
+#panierClient li .oursInfoQuantPanier {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-section .articlePanier aside .descriptionTitre,
-section .articlePanier aside .tarifTitre {
-  text-decoration: underline;
-  margin: 0 0 20px 0;
+#panierClient li .oursInfoQuantPanier .légendeQuantitéPanier {
+  padding: 10px 0 0 10px;
 }
 
-section .articlePanier aside .description {
-  margin: 0 0 20px 0;
-  line-height: 150%;
+#panierClient li .oursInfoQuantPanier .quantitéPanier {
+  padding: 5px 5px 0 5px;
 }
 
-section .articlePanier aside .tarif {
-  width: 80%;
-  margin: 0 0 20px 0;
+#panierClient li .oursInfoQuantPanier .moinsQuantité,
+#panierClient li .oursInfoQuantPanier .plusQuantité {
+  margin: 0 5px 0 5px;
 }
 
-section .articlePanier aside #panier {
-  margin: 0;
+#clear {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.formCommande {
-  margin-right: auto;
-  margin-left: auto;
-  display: table;
+#clear #panier {
+  margin: 20px auto;
+  padding: 5px 2px 5px 2px;
+  font-family: 'aaarghnormal';
+  font-weight: bold;
+  color: #fff;
+  background-color: #925DF5;
+  -webkit-box-shadow: 2px 2px 1px #E68A0A;
+          box-shadow: 2px 2px 1px #E68A0A;
+  border: 0;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
-.formCommande .formulaire {
-  display: table-row;
-}
-
-.formCommande label,
-.formCommande input {
-  display: table-cell;
-  margin-bottom: 15px;
-}
-
-.formCommande label {
-  padding-right: 15px;
-}
-
-.formCommande .commande {
-  margin-left: auto;
-  margin-right: auto;
+#clear #panier:hover {
+  -webkit-transform: scale(1.2) translate(10%, 10%);
+          transform: scale(1.2) translate(10%, 10%);
 }
 
 #item {

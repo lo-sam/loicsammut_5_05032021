@@ -1,54 +1,49 @@
-section .articlePanier {
-    border: 1px solid $color-prim;
-    article {
-        width: 10%;
-        .produitImg {
-            width: 120px;
-            height: 120px;
-        }
-    }
-    aside {
-        border: none;
-        h3 {
-            font-size: 1.2rem;
-            margin: 0 0 20px 0;
-        }
-        .descriptionTitre,
-        .tarifTitre {
-            text-decoration: underline;
-            margin: 0 0 20px 0;
-        }
-        .description {
-            margin: 0 0 20px 0;
-            line-height: 150%;
-        }
-        .tarif {
-            width: 80%;
-            margin: 0 0 20px 0;
-        }
-        #panier {
-            margin: 0;
-        }
-    }
-}
-
-.formCommande {
-    margin-right: auto;
-    margin-left: auto;
-    display: table;
-    .formulaire {
-        display: table-row;
-    }
-    label,
-    input {
-        display: table-cell;
-        margin-bottom: 15px;
-    }
-    label {
-        padding-right: 15px;
-    }
-    .commande {
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
+   #panierClient li {
+       margin: 10px auto 10px auto;
+       width: 70%;
+       padding: 10px;
+       border: 1px $color-prim solid;
+       display: flex;
+       .pictedPanier {
+           width: 150px;
+       }
+       .infoPanier {
+           padding: 20px;
+           .namePanier,
+           .couleurPanier,
+           .pricePanier {
+               padding: 10px 0 0 10px;
+           }
+       }
+       .oursInfoQuantPanier {
+           display: flex;
+           .légendeQuantitéPanier {
+               padding: 10px 0 0 10px;
+           }
+           .quantitéPanier {
+               padding: 5px 5px 0 5px;
+           }
+           .moinsQuantité,
+           .plusQuantité {
+               margin: 0 5px 0 5px;
+           }
+       }
+   }
+   
+   #clear {
+       display: flex;
+       #panier {
+           margin: 20px auto;
+           padding: 5px 2px 5px 2px;
+           font-family: 'aaarghnormal';
+           font-weight: bold;
+           color: $color-font-foot;
+           background-color: $color-prim;
+           box-shadow: 2px 2px 1px $color-sec;
+           border: 0;
+           transition: transform 0.5s;
+           &:hover {
+               transform: scale(1.2) translate(10%, 10%);
+           }
+       }
+   }
