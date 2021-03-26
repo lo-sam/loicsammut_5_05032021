@@ -83,7 +83,7 @@ body .wrapper {
 
 @media (min-width: 1200px) {
   body .wrapper {
-    max-width: 1200px;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -170,13 +170,13 @@ nav ul li:hover {
 
 nav ul #liAcc {
   position: absolute;
-  left: 80%;
+  left: 800px;
 }
 
 nav ul #liPanier {
   margin: -10px 10px 0 0;
   position: absolute;
-  left: 90%;
+  left: 900px;
 }
 
 nav ul #liPanier .panierImg {

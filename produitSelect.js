@@ -129,7 +129,7 @@ promise.then(response => {
             }
 
             //on recharge la page
-            // document.location.reload();
+            document.location.reload();
         })
 
 
