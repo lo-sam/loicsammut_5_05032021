@@ -156,27 +156,27 @@ if (produits) {
 
 
     //label adresse
-    let adresse = document.createElement('label');
-    adresse.classList.add('adresse');
-    adresse.setAttribute('for', 'adresse');
-    adresse.textContent = ('adresse:');
+    let adress = document.createElement('label');
+    adress.classList.add('adress');
+    adress.setAttribute('for', 'adress');
+    adress.textContent = ('adresse:');
 
     //input de saisi de l'adresse
-    let adresseI = document.createElement('input');
-    adresseI.id = 'adresse';
-    adresseI.setAttribute('type', 'text');
+    let adressI = document.createElement('input');
+    adressI.id = 'adress';
+    adressI.setAttribute('type', 'text');
 
-    //label code postal
-    let zipCode = document.createElement('label');
-    zipCode.classList.add('zipCode');
-    zipCode.setAttribute('for', 'zipCode');
-    zipCode.textContent = ('Code postal:');
+    //label de la ville
+    let city = document.createElement('label');
+    city.classList.add('city');
+    city.setAttribute('for', 'city');
+    city.textContent = ('Ville:');
 
-    //input de saisi du code postal
-    let zipCodeI = document.createElement('input');
-    zipCodeI.id = 'zipCode';
-    zipCodeI.setAttribute('type', 'text');
-    zipCodeI.setAttribute('pattern', "[0-9]{5}");
+    //input de saisi de la ville
+    let cityI = document.createElement('input');
+    cityI.id = 'city';
+    cityI.setAttribute('type', 'text');
+    cityI.setAttribute('pattern', "[0-9]{5}");
 
     //label adresse mail
     let mail = document.createElement('label');
@@ -190,18 +190,6 @@ if (produits) {
     mailI.setAttribute('type', 'mail');
     mailI.setAttribute('pattern', "[0-9]{5}");
 
-    //label phone
-    let phone = document.createElement('label');
-    phone.classList.add('phone');
-    phone.setAttribute('for', 'phone');
-    phone.textContent = ('Numéro de téléphone:');
-
-    //input de saisi du numéro de téléphone
-    let phoneI = document.createElement('input');
-    phoneI.id = 'phone';
-    phoneI.setAttribute('type', 'text');
-    phoneI.setAttribute('pattern', "[0-9]{5}");
-
     //input de validation de formulaire
     let validCmdBtn = document.createElement('input');
     validCmdBtn.id = 'validCmdBtn';
@@ -214,14 +202,12 @@ if (produits) {
     formulaire.appendChild(firstNameI);
     formulaire.appendChild(lastName);
     formulaire.appendChild(lastNameI);
-    formulaire.appendChild(adresse);
-    formulaire.appendChild(adresseI);
-    formulaire.appendChild(zipCode);
-    formulaire.appendChild(zipCodeI);
+    formulaire.appendChild(adress);
+    formulaire.appendChild(adressI);
+    formulaire.appendChild(city);
+    formulaire.appendChild(cityI);
     formulaire.appendChild(mail);
     formulaire.appendChild(mailI);
-    formulaire.appendChild(phone);
-    formulaire.appendChild(phoneI);
     formulaire.appendChild(validCmdBtn);
 
 
