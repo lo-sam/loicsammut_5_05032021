@@ -1,5 +1,7 @@
 let produits = JSON.parse(localStorage.getItem('panier'));
 
+
+////////////////////PANIER////////////////////
 if (produits) {
 
     for (let i = 0; i < produits.length; i++) {
@@ -111,6 +113,122 @@ if (produits) {
         //on recharge la page
         document.location.reload();
     });
+
+
+    ////////////////////FORMULAIRE////////////////////
+
+
+    // import d un séparateur pour délimiter les articles du formulaire
+    let separateur = document.createElement('img');
+    separateur.setAttribute('src', ' images/line.png ');
+    separateur.classList.add('separateur');
+
+    //création du formulaire
+    let formulaire = document.createElement('form');
+    formulaire.setAttribute('method', 'GET');
+    formulaire.classList.add('formCommande');
+
+    //label Prénom
+    let firstName = document.createElement('label');
+    firstName.classList.add('firstName');
+    firstName.setAttribute('for', 'firstName');
+    firstName.textContent = ('Prénom:');
+
+    //input de saisi du prénom
+    let firstNameI = document.createElement('input');
+    firstNameI.id = 'firstName';
+    firstNameI.setAttribute('type', 'text');
+    firstNameI.setAttribute('pattern', "[A-Z, a-z]{3}");
+
+
+
+    //label Nom
+    let lastName = document.createElement('label');
+    lastName.classList.add('lastName');
+    lastName.setAttribute('for', 'lastName');
+    lastName.textContent = ('Nom:');
+
+    //input de saisi du Nom
+    let lastNameI = document.createElement('input');
+    lastNameI.id = 'lastName';
+    lastNameI.setAttribute('type', 'text');
+    lastNameI.setAttribute('pattern', "[A-Z, a-z]{3}");
+
+
+    //label adresse
+    let adresse = document.createElement('label');
+    adresse.classList.add('adresse');
+    adresse.setAttribute('for', 'adresse');
+    adresse.textContent = ('adresse:');
+
+    //input de saisi de l'adresse
+    let adresseI = document.createElement('input');
+    adresseI.id = 'adresse';
+    adresseI.setAttribute('type', 'text');
+
+    //label code postal
+    let zipCode = document.createElement('label');
+    zipCode.classList.add('zipCode');
+    zipCode.setAttribute('for', 'zipCode');
+    zipCode.textContent = ('Code postal:');
+
+    //input de saisi du code postal
+    let zipCodeI = document.createElement('input');
+    zipCodeI.id = 'zipCode';
+    zipCodeI.setAttribute('type', 'text');
+    zipCodeI.setAttribute('pattern', "[0-9]{5}");
+
+    //label adresse mail
+    let mail = document.createElement('label');
+    mail.classList.add('mail');
+    mail.setAttribute('for', 'mail');
+    mail.textContent = ('adresse e-mail:');
+
+    //input de saisi de l'adresse mail
+    let mailI = document.createElement('input');
+    mailI.id = 'mail';
+    mailI.setAttribute('type', 'mail');
+    mailI.setAttribute('pattern', "[0-9]{5}");
+
+    //label phone
+    let phone = document.createElement('label');
+    phone.classList.add('phone');
+    phone.setAttribute('for', 'phone');
+    phone.textContent = ('Numéro de téléphone:');
+
+    //input de saisi du numéro de téléphone
+    let phoneI = document.createElement('input');
+    phoneI.id = 'phone';
+    phoneI.setAttribute('type', 'text');
+    phoneI.setAttribute('pattern', "[0-9]{5}");
+
+    //input de validation de formulaire
+    let validCmdBtn = document.createElement('input');
+    validCmdBtn.id = 'validCmdBtn';
+    validCmdBtn.setAttribute('type', 'submit');
+    validCmdBtn.setAttribute('value', 'Valider la commande');
+
+    document.getElementById('form').appendChild(separateur);
+    document.getElementById('form').appendChild(formulaire);
+    formulaire.appendChild(firstName);
+    formulaire.appendChild(firstNameI);
+    formulaire.appendChild(lastName);
+    formulaire.appendChild(lastNameI);
+    formulaire.appendChild(adresse);
+    formulaire.appendChild(adresseI);
+    formulaire.appendChild(zipCode);
+    formulaire.appendChild(zipCodeI);
+    formulaire.appendChild(mail);
+    formulaire.appendChild(mailI);
+    formulaire.appendChild(phone);
+    formulaire.appendChild(phoneI);
+    formulaire.appendChild(validCmdBtn);
+
+
+
+
+
+
 
 
 } else {

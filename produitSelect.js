@@ -55,7 +55,7 @@ promise.then(response => {
         let oursPrice = document.createElement('div');
         oursPrice.classList.add('price');
         oursPrice.textContent = 'Prix: ' +
-            ours.price + ' €';
+            ours.price / 100 + ' €';
 
         // les enfants appartenant à bear //
         bear.appendChild(picBear);
