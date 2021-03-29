@@ -176,7 +176,7 @@ if (produits) {
     let cityI = document.createElement('input');
     cityI.id = 'city';
     cityI.setAttribute('type', 'text');
-    cityI.setAttribute('pattern', "[0-9]{5}");
+    cityI.setAttribute('pattern', "[A-Z, a-z]");
 
     //label adresse mail
     let mail = document.createElement('label');
@@ -212,8 +212,28 @@ if (produits) {
 
 
 
-
-
+    // Evenement d'ajout du bon de commande
+    validCmdBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        let prénom = document.getElementById('firstName').value;
+        let nom = document.getElementById('lastName').value;
+        let adresse = document.getElementById('adress').value;
+        let ville = document.getElementById('city').value;
+        let email = document.getElementById('mail').value;
+        //  bon de commande que l'on crée dans le tableau validCmdBtn
+        let bonDeCommande = {
+            prénom: prénom,
+            nom: nom,
+            adresse: adresse,
+            ville: ville,
+            email: email,
+            panier: JSON.parse(localStorage.getItem('panier'))
+        };
+        let bonDeCommandes = JSON.parse(localStorage.getItem('validCmdBtn'));
+        bonDeCommandes = [];
+        bonDeCommandes.push(bonDeCommande);
+        localStorage.setItem('validCmdBtn', JSON.stringify(bonDeCommandes));
+    })
 
 
 

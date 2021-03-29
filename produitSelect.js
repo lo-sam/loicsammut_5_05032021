@@ -98,27 +98,28 @@ promise.then(response => {
                 for (let i = 0; i < produits.length; i++) {
                     let nomSelect = produits[i].nom;
                     let couleurSelect = produits[i].couleur;
+                    console.log(produits[i].nom);
 
+                    if ((ours.name === nomSelect) && (couleurSelect !== oursOptionSelect.value)) {
+                        //si meme nom mais couleur differente, on ajoute l article au panier
+                        EnvoisDansLePanier();
+                        console.log('meme nom mais couleur differente');
+                        console.log(couleurSelect);
+                    }
+                    if (ours.name !== nomSelect) {
+                        //si l'article est différent
+                        console.log('pas meme nom');
+                        EnvoisDansLePanier();
+                        //break;
+                    }
                     if ((ours.name && oursOptionSelect.value) === (nomSelect && couleurSelect)) {
                         // Si le nom de l'article est déjà dans le panier et que la couleur est identique
                         console.log('meme nom et meme couleur');
                         //on ajoute 1 à sa quantité
                         produits[i].quantité = produits[i].quantité + 1;
                         localStorage.setItem('panier', JSON.stringify(produits));
-                        break;
-                    } else if ((ours.name === nomSelect) && (couleurSelect !== oursOptionSelect.value)) {
-                        //si meme nom mais couleur differente, on ajoute l article au panier
-                        EnvoisDansLePanier();
-                        console.log('meme nom mais couleur differente');
-                        console.log(couleurSelect);
-                        break;
-                    } else if (ours.name !== nomSelect) {
-                        //si l'article est différent
-                        console.log('pas meme nom');
-                        EnvoisDansLePanier();
-                        break;
+                        //break;
                     }
-
                 }
             }
             // si pas produit dans storage
@@ -129,7 +130,7 @@ promise.then(response => {
             }
 
             //on recharge la page
-            document.location.reload();
+            //    document.location.reload();
         })
 
 
