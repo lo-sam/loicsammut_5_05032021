@@ -1,10 +1,10 @@
-let produits = JSON.parse(localStorage.getItem('panier'));
+let products = JSON.parse(localStorage.getItem('products'));
 
 
 ////////////////////PANIER////////////////////
-if (produits) {
+if (products) {
 
-    for (let i = 0; i < produits.length; i++) {
+    for (let i = 0; i < products.length; i++) {
 
         //   for (i = 0; i < localStorage.length; i++) {
         let articlePanier = document.createElement('li');
@@ -12,7 +12,7 @@ if (produits) {
         // insertion de l'image via l'API //
         let picBearPanier = document.createElement('img');
         picBearPanier.classList.add('pictedPanier');
-        picBearPanier.setAttribute('src', produits[i].image);
+        picBearPanier.setAttribute('src', products[i].image);
 
         // création du contenant pour afficher les infos //
         let oursInfoPanier = document.createElement('div');
@@ -22,7 +22,7 @@ if (produits) {
         let oursNamePanier = document.createElement('div');
         oursNamePanier.classList.add('namePanier');
         oursNamePanier.textContent = 'Nom: ' +
-            produits[i].nom;
+            products[i].nom;
 
 
         // création du contenant pour afficher les quantités //
@@ -43,7 +43,7 @@ if (produits) {
         // quantité du produit //    
         let oursQuantitéPanier = document.createElement('div');
         oursQuantitéPanier.classList.add('quantitéPanier');
-        oursQuantitéPanier.textContent = produits[i].quantité;
+        oursQuantitéPanier.textContent = products[i].quantité;
 
         //bouton + quantité    
         let plusQuantitéPanier = document.createElement('input');
@@ -55,14 +55,14 @@ if (produits) {
         let ourscouleurPanier = document.createElement('div');
         ourscouleurPanier.classList.add('couleurPanier');
         ourscouleurPanier.textContent = 'Couleur: ' +
-            produits[i].couleur;
+            products[i].couleur;
 
         // prix du produit //
         let oursPricePanier = document.createElement('div');
         oursPricePanier.classList.add('pricePanier');
-        let prixTotal = produits[i].prix * produits[i].quantité;
+        let prixTotal = products[i].prix * products[i].quantité;
         oursPricePanier.textContent = 'Prix: ' +
-            produits[i].prix / 100 + '€' + ' unitaire, soit un total de: ' + prixTotal / 100 + '€';
+            products[i].prix / 100 + '€' + ' unitaire, soit un total de: ' + prixTotal / 100 + '€';
 
         // les enfants appartenant à bear //
         articlePanier.appendChild(picBearPanier);
@@ -79,21 +79,21 @@ if (produits) {
         document.getElementById('panierClient').appendChild(articlePanier);
 
         //on agit sur le click du bouton - pour reduire le nb d'article d'1
-        moinsQuantitéPanier.addEventListener('click', (emoins) => {
-            produits[i].quantité = produits[i].quantité - 1;
-            localStorage.setItem('panier', JSON.stringify(produits));
+        moinsQuantitéPanier.addEventListener('click', () => {
+            products[i].quantité = products[i].quantité - 1;
+            localStorage.setItem('products', JSON.stringify(products));
             //on recharge la page
             document.location.reload();
         });
 
         //on agit sur le click du bouton + pour augmenter le nb d'article d'1
-        plusQuantitéPanier.addEventListener('click', (eplus) => {
-            produits[i].quantité = produits[i].quantité + 1;
-            localStorage.setItem('panier', JSON.stringify(produits));
+        plusQuantitéPanier.addEventListener('click', () => {
+            products[i].quantité = products[i].quantité + 1;
+            localStorage.setItem('products', JSON.stringify(products));
             //on recharge la page
             document.location.reload();
         });
-        let nbArticle = 0 + produits[i].quantité;
+        let nbArticle = 0 + products[i].quantité;
         let nbCmde = document.getElementById('nbCmde');
         nbCmde.style.visibility = 'visible';
         nbCmde.textContent = nbArticle;
@@ -107,9 +107,9 @@ if (produits) {
 
     document.getElementById('clear').appendChild(clearBtn);
 
-    //on agit sur le click du bouton + pour augmenter le nb d'article d'1
-    clearBtn.addEventListener('click', (clearBtn) => {
-        localStorage.clear('panier', JSON.stringify(produits));
+    //on agit sur le click du bouton "vider le panier" pour supprimer le storage en cours
+    clearBtn.addEventListener('click', () => {
+        localStorage.clear('products', JSON.stringify(products));
         //on recharge la page
         document.location.reload();
     });
@@ -138,9 +138,6 @@ if (produits) {
     let firstNameI = document.createElement('input');
     firstNameI.id = 'firstName';
     firstNameI.setAttribute('type', 'text');
-    firstNameI.setAttribute('pattern', "[A-Z, a-z]{3}");
-
-
 
     //label Nom
     let lastName = document.createElement('label');
@@ -152,7 +149,6 @@ if (produits) {
     let lastNameI = document.createElement('input');
     lastNameI.id = 'lastName';
     lastNameI.setAttribute('type', 'text');
-    lastNameI.setAttribute('pattern', "[A-Z, a-z]{3}");
 
 
     //label adresse
@@ -176,7 +172,6 @@ if (produits) {
     let cityI = document.createElement('input');
     cityI.id = 'city';
     cityI.setAttribute('type', 'text');
-    cityI.setAttribute('pattern', "[A-Z, a-z]");
 
     //label adresse mail
     let mail = document.createElement('label');
@@ -188,13 +183,12 @@ if (produits) {
     let mailI = document.createElement('input');
     mailI.id = 'mail';
     mailI.setAttribute('type', 'mail');
-    mailI.setAttribute('pattern', "[0-9]{5}");
 
     //input de validation de formulaire
-    let validCmdBtn = document.createElement('input');
-    validCmdBtn.id = 'validCmdBtn';
-    validCmdBtn.setAttribute('type', 'submit');
-    validCmdBtn.setAttribute('value', 'Valider la commande');
+    let contact = document.createElement('input');
+    contact.id = 'validCmdBtn';
+    contact.setAttribute('type', 'submit');
+    contact.setAttribute('value', 'Valider la commande');
 
     document.getElementById('form').appendChild(separateur);
     document.getElementById('form').appendChild(formulaire);
@@ -208,34 +202,47 @@ if (produits) {
     formulaire.appendChild(cityI);
     formulaire.appendChild(mail);
     formulaire.appendChild(mailI);
-    formulaire.appendChild(validCmdBtn);
+    formulaire.appendChild(contact);
 
 
 
     // Evenement d'ajout du bon de commande
-    validCmdBtn.addEventListener('click', (event) => {
+    contact.addEventListener('click', (event) => {
         event.preventDefault();
-        let prénom = document.getElementById('firstName').value;
-        let nom = document.getElementById('lastName').value;
-        let adresse = document.getElementById('adress').value;
-        let ville = document.getElementById('city').value;
+        let firstName = document.getElementById('firstName').value;
+        let lastName = document.getElementById('lastName').value;
+        let adress = document.getElementById('adress').value;
+        let city = document.getElementById('city').value;
         let email = document.getElementById('mail').value;
-        //  bon de commande que l'on crée dans le tableau validCmdBtn
+        //  bon de commande que l'on crée dans le tableau contact
         let bonDeCommande = {
-            prénom: prénom,
-            nom: nom,
-            adresse: adresse,
-            ville: ville,
+            firstName: firstName,
+            lastName: lastName,
+            adress: adress,
+            city: city,
             email: email,
-            panier: JSON.parse(localStorage.getItem('panier'))
+            //products: localStorage.getItem('products')
         };
-        let bonDeCommandes = JSON.parse(localStorage.getItem('validCmdBtn'));
-        bonDeCommandes = [];
-        bonDeCommandes.push(bonDeCommande);
-        localStorage.setItem('validCmdBtn', JSON.stringify(bonDeCommandes));
+        // bonDeCommandes.push(bonDeCommande);
+        localStorage.setItem('contact', JSON.stringify(bonDeCommande));
     })
 
-
+    const facture = fetch('http://localhost:3000/api/teddies/order', {
+        method: "POST",
+        body: JSON.stringify(contact),
+        Headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    facture.then(async(response) => {
+        try {
+            console.log(response);
+            const contenuFacture = await response.json();
+            console.log(contenuFacture);
+        } catch (e) {
+            console.log(e);
+        }
+    });
 
 } else {
     let titrePanier = document.getElementById('titrePanier');
