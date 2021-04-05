@@ -38,8 +38,16 @@
         }
     }
     
-    #clear {
+    #clear,
+    #prixTotalPanierCmde {
         display: flex;
+        #prixTotalPanier {
+            margin: 20px auto;
+            padding: 5px 2px 5px 2px;
+            font-family: 'aaarghnormal';
+            font-weight: bold;
+            color: $color-text;
+        }
         #panier {
             margin: 20px auto;
             padding: 5px 2px 5px 2px;

@@ -316,13 +316,24 @@ h2 {
   margin: 0 5px 0 5px;
 }
 
-#clear {
+#clear,
+#prixTotalPanierCmde {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-#clear #panier {
+#clear #prixTotalPanier,
+#prixTotalPanierCmde #prixTotalPanier {
+  margin: 20px auto;
+  padding: 5px 2px 5px 2px;
+  font-family: 'aaarghnormal';
+  font-weight: bold;
+  color: #000;
+}
+
+#clear #panier,
+#prixTotalPanierCmde #panier {
   margin: 20px auto;
   padding: 5px 2px 5px 2px;
   font-family: 'aaarghnormal';
@@ -338,7 +349,8 @@ h2 {
   transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
-#clear #panier:hover {
+#clear #panier:hover,
+#prixTotalPanierCmde #panier:hover {
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
 }

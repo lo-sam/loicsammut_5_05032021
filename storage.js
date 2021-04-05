@@ -3,8 +3,8 @@ let products = JSON.parse(localStorage.getItem('products'));
 
 ////////////////////PANIER////////////////////
 if (products) {
-    let nbArticle = 0
-    let prixTotalPanier = 0;
+    let nbArticle = 0;
+    let prixTotalDuPanier = 0;
     for (let i = 0; i < products.length; i++) {
 
         //   for (i = 0; i < localStorage.length; i++) {
@@ -108,14 +108,13 @@ if (products) {
         nbCmde.style.visibility = 'visible';
         nbCmde.textContent = nbArticle;
 
-        prixTotalPanier = (prixTotalPanier + prixTotal);
+        prixTotalDuPanier = (prixTotalDuPanier + prixTotal);
     }
 
     //Prix global du panier
-    console.log(prixTotalPanier);
     prixTotalPanier = document.createElement('div');
     prixTotalPanier.id = 'prixTotalPanier';
-    prixTotalPanier.textContent = 'Le total de votre commande est de: ' + prixTotalPanier + '€';
+    prixTotalPanier.textContent = 'Le total de votre commande est de: ' + prixTotalDuPanier / 100 + '€';
     document.getElementById('prixTotalPanierCmde').appendChild(prixTotalPanier);
 
     // bouton pour vider le panier
