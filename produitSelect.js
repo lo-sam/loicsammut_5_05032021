@@ -99,34 +99,28 @@ promise.then(response => {
                 for (let i = 0; i < products.length; i++) {
                     let nomSelect = products[i].nom;
                     let couleurSelect = products[i].couleur;
-                    console.log(products[i].nom);
 
-                    if ((ours.name === nomSelect) && (couleurSelect !== oursOptionSelect.value)) {
-                        //si meme nom mais couleur differente, on ajoute l article au panier
-                        EnvoisDansLePanier();
-                        console.log('meme nom mais couleur differente');
-                        console.log(couleurSelect);
-                    }
                     if (ours.name !== nomSelect) {
                         //si l'article est différent
-                        console.log('pas meme nom');
                         EnvoisDansLePanier();
-                        //break;
-                    }
-                    if ((ours.name && oursOptionSelect.value) === (nomSelect && couleurSelect)) {
+
+                    } else if ((ours.name === nomSelect) && (couleurSelect !== oursOptionSelect.value)) {
+                        //si meme nom mais couleur differente, on ajoute l article au panier
+                        EnvoisDansLePanier();
+
+
+                    } else if ((ours.name && oursOptionSelect.value) === (nomSelect && couleurSelect)) {
                         // Si le nom de l'article est déjà dans le panier et que la couleur est identique
-                        console.log('meme nom et meme couleur');
                         //on ajoute 1 à sa quantité
                         products[i].quantité = products[i].quantité + 1;
                         localStorage.setItem('products', JSON.stringify(products));
-                        //break;
+                        break;
                     }
                 }
             }
             // si pas produit dans storage
             else {
                 products = [];
-                console.log('création du panier');
                 EnvoisDansLePanier();
             }
 
@@ -173,10 +167,12 @@ promise.then(response => {
 
 // Affichage Panier
 let products = JSON.parse(localStorage.getItem('products'));
-
-for (let i = 0; i < products.length; i++) {
-    let nbArticle = 0 + products[i].quantité;
-    let nbCmde = document.getElementById('nbCmde');
-    nbCmde.style.visibility = 'visible';
-    nbCmde.textContent = nbArticle;
+if (products) {
+    let nbArticle = 0
+    for (let i = 0; i < products.length; i++) {
+        nbArticle = nbArticle + products[i].quantité;
+        let nbCmde = document.getElementById('nbCmde');
+        nbCmde.style.visibility = 'visible';
+        nbCmde.textContent = nbArticle;
+    }
 }
