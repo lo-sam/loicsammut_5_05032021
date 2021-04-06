@@ -127,45 +127,10 @@ promise.then(response => {
                 products = [];
                 EnvoisDansLePanier();
             }
-
             //on recharge la page
             document.location.reload();
         })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     })
-
-
 });
 
 
