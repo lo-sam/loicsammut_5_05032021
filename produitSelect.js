@@ -103,17 +103,21 @@ promise.then(response => {
                     if (ours.name !== nomSelect) {
                         //si l'article est différent
                         EnvoisDansLePanier();
+                        break;
 
                     } else if ((ours.name === nomSelect) && (couleurSelect !== oursOptionSelect.value)) {
                         //si meme nom mais couleur differente, on ajoute l article au panier
                         EnvoisDansLePanier();
-
+                        break;
 
                     } else if ((ours.name && oursOptionSelect.value) === (nomSelect && couleurSelect)) {
                         // Si le nom de l'article est déjà dans le panier et que la couleur est identique
                         //on ajoute 1 à sa quantité
                         products[i].quantité = products[i].quantité + 1;
                         localStorage.setItem('products', JSON.stringify(products));
+                        break;
+                    } else {
+                        EnvoisDansLePanier();
                         break;
                     }
                 }
@@ -123,45 +127,10 @@ promise.then(response => {
                 products = [];
                 EnvoisDansLePanier();
             }
-
             //on recharge la page
             document.location.reload();
         })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     })
-
-
 });
 
 

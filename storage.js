@@ -334,43 +334,40 @@ if (products) {
 
     /////////////////////////// VALIDATION DU FORMULAIRE ///////////////////////////
 
-    // Evenement d'ajout du bon de commande
+
+
+
+    const order = () => {
+            let firstName = document.getElementById('firstName').value;
+            let lastName = document.getElementById('lastName').value;
+            let adress = document.getElementById('adress').value;
+            let city = document.getElementById('city').value;
+            let email = document.getElementById('mail').value;
+            //  bon de commande que l'on crée dans le tableau contact
+            let contact = {
+                firstName: firstName,
+                lastName: lastName,
+                adress: adress,
+                city: city,
+                email: email,
+                products: localStorage.getItem('products')
+            }
+            localStorage.setItem('contact', JSON.stringify(contact));
+            id = [];
+            const facture = fetch('http://localhost:3000/api/teddies/order', {
+                method: "POST",
+                body: JSON.stringify(contact),
+                Headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+        }
+        // Evenement d'ajout du bon de commande
     contact.addEventListener('click', (event) => {
         event.preventDefault();
-        let firstName = document.getElementById('firstName').value;
-        let lastName = document.getElementById('lastName').value;
-        let adress = document.getElementById('adress').value;
-        let city = document.getElementById('city').value;
-        let email = document.getElementById('mail').value;
-        //  bon de commande que l'on crée dans le tableau contact
-        let bonDeCommande = {
-            firstName: firstName,
-            lastName: lastName,
-            adress: adress,
-            city: city,
-            email: email,
-            //products: localStorage.getItem('products')
-        };
-        // bonDeCommandes.push(bonDeCommande);
-        localStorage.setItem('contact', JSON.stringify(bonDeCommande));
-    })
+        order();
+    });
 
-    const facture = fetch('http://localhost:3000/api/teddies/order', {
-        method: "POST",
-        body: JSON.stringify(contact),
-        Headers: {
-            "Content-Type": "application/json",
-        },
-    });
-    facture.then(async(response) => {
-        try {
-            console.log(response);
-            const contenuFacture = await response.json();
-            console.log(contenuFacture);
-        } catch (e) {
-            console.log(e);
-        }
-    });
 
 } else {
     let titrePanier = document.getElementById('titrePanier');
