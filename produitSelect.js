@@ -78,59 +78,58 @@ promise.then(response => {
             event.preventDefault();
 
             //  produit que l'on crée dans le tableau panier
-            let produit = {
+            let productId = {
                 nom: ours.name,
                 image: ours.imageUrl,
                 couleur: oursOptionSelect.value,
                 prix: ours.price,
                 quantité: 1,
+                id: ours.id,
             };
-            let produits = JSON.parse(localStorage.getItem('panier'));
+            let products = JSON.parse(localStorage.getItem('products'));
 
             // function d'envois au panier
             const EnvoisDansLePanier = () => {
-                produits.push(produit);
-                localStorage.setItem('panier', JSON.stringify(produits));
+                products.push(productId);
+                localStorage.setItem('products', JSON.stringify(products));
             };
 
             //si produit dans storage (produits=true)
-            if (produits) {
-                for (let i = 0; i < produits.length; i++) {
-                    let nomSelect = produits[i].nom;
-                    let couleurSelect = produits[i].couleur;
-                    console.log(produits[i].nom);
+            if (products) {
+                for (let i = 0; i < products.length; i++) {
+                    let nomSelect = products[i].nom;
+                    let couleurSelect = products[i].couleur;
 
-                    if ((ours.name === nomSelect) && (couleurSelect !== oursOptionSelect.value)) {
-                        //si meme nom mais couleur differente, on ajoute l article au panier
-                        EnvoisDansLePanier();
-                        console.log('meme nom mais couleur differente');
-                        console.log(couleurSelect);
-                    }
                     if (ours.name !== nomSelect) {
                         //si l'article est différent
-                        console.log('pas meme nom');
                         EnvoisDansLePanier();
-                        //break;
-                    }
-                    if ((ours.name && oursOptionSelect.value) === (nomSelect && couleurSelect)) {
+                        break;
+
+                    } else if ((ours.name === nomSelect) && (couleurSelect !== oursOptionSelect.value)) {
+                        //si meme nom mais couleur differente, on ajoute l article au panier
+                        EnvoisDansLePanier();
+                        break;
+
+                    } else if ((ours.name && oursOptionSelect.value) === (nomSelect && couleurSelect)) {
                         // Si le nom de l'article est déjà dans le panier et que la couleur est identique
-                        console.log('meme nom et meme couleur');
                         //on ajoute 1 à sa quantité
-                        produits[i].quantité = produits[i].quantité + 1;
-                        localStorage.setItem('panier', JSON.stringify(produits));
-                        //break;
+                        products[i].quantité = products[i].quantité + 1;
+                        localStorage.setItem('products', JSON.stringify(products));
+                        break;
+                    } else {
+                        EnvoisDansLePanier();
+                        break;
                     }
                 }
             }
             // si pas produit dans storage
             else {
-                produits = [];
-                console.log('création du panier');
+                products = [];
                 EnvoisDansLePanier();
             }
 
             //on recharge la page
-            //    document.location.reload();
+            document.location.reload();
         })
 
 
@@ -171,11 +170,13 @@ promise.then(response => {
 
 
 // Affichage Panier
-let produits = JSON.parse(localStorage.getItem('panier'));
-
-for (let i = 0; i < produits.length; i++) {
-    let nbArticle = 0 + produits[i].quantité;
-    let nbCmde = document.getElementById('nbCmde');
-    nbCmde.style.visibility = 'visible';
-    nbCmde.textContent = nbArticle;
+let products = JSON.parse(localStorage.getItem('products'));
+if (products) {
+    let nbArticle = 0
+    for (let i = 0; i < products.length; i++) {
+        nbArticle = nbArticle + products[i].quantité;
+        let nbCmde = document.getElementById('nbCmde');
+        nbCmde.style.visibility = 'visible';
+        nbCmde.textContent = nbArticle;
+    }
 }

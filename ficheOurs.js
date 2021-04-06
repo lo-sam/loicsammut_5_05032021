@@ -47,11 +47,13 @@ fetchOurs.then(response => {
 
 
 // Affichage Panier
-let produits = JSON.parse(localStorage.getItem('panier'));
-
-for (let i = 0; i < produits.length; i++) {
-    let nbArticle = 0 + produits[i].quantité;
-    let nbCmde = document.getElementById('nbCmde');
-    nbCmde.style.visibility = 'visible';
-    nbCmde.textContent = nbArticle;
+let products = JSON.parse(localStorage.getItem('products'));
+if (products) {
+    let nbArticle = 0
+    for (let i = 0; i < products.length; i++) {
+        nbArticle = nbArticle + products[i].quantité;
+        let nbCmde = document.getElementById('nbCmde');
+        nbCmde.style.visibility = 'visible';
+        nbCmde.textContent = nbArticle;
+    }
 }
