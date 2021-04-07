@@ -1,11 +1,11 @@
-let products = JSON.parse(localStorage.getItem('products'));
+let product = JSON.parse(localStorage.getItem('product'));
 
 
 ////////////////////PANIER////////////////////
-if (products) {
+if (product) {
     let nbArticle = 0;
     let prixTotalDuPanier = 0;
-    for (let i = 0; i < products.length; i++) {
+    for (let i = 0; i < product.length; i++) {
 
         //   for (i = 0; i < localStorage.length; i++) {
         let articlePanier = document.createElement('li');
@@ -13,7 +13,7 @@ if (products) {
         // insertion de l'image via l'API //
         let picBearPanier = document.createElement('img');
         picBearPanier.classList.add('pictedPanier');
-        picBearPanier.setAttribute('src', products[i].image);
+        picBearPanier.setAttribute('src', product[i].image);
 
         // création du contenant pour afficher les infos //
         let oursInfoPanier = document.createElement('div');
@@ -23,7 +23,7 @@ if (products) {
         let oursNamePanier = document.createElement('div');
         oursNamePanier.classList.add('namePanier');
         oursNamePanier.textContent = 'Nom: ' +
-            products[i].nom;
+            product[i].nom;
 
 
         // création du contenant pour afficher les quantités //
@@ -44,7 +44,7 @@ if (products) {
         // quantité du produit //    
         let oursQuantitéPanier = document.createElement('div');
         oursQuantitéPanier.classList.add('quantitéPanier');
-        oursQuantitéPanier.textContent = products[i].quantité;
+        oursQuantitéPanier.textContent = product[i].quantité;
 
         //bouton + quantité    
         let plusQuantitéPanier = document.createElement('input');
@@ -56,14 +56,14 @@ if (products) {
         let ourscouleurPanier = document.createElement('div');
         ourscouleurPanier.classList.add('couleurPanier');
         ourscouleurPanier.textContent = 'Couleur: ' +
-            products[i].couleur;
+            product[i].couleur;
 
         // prix du produit //
         let oursPricePanier = document.createElement('div');
         oursPricePanier.classList.add('pricePanier');
-        let prixTotal = products[i].prix * products[i].quantité;
+        let prixTotal = product[i].prix * product[i].quantité;
         oursPricePanier.textContent = 'Prix: ' +
-            products[i].prix / 100 + '€' + ' unitaire, soit un total de: ' + prixTotal / 100 + '€';
+            product[i].prix / 100 + '€' + ' unitaire, soit un total de: ' + prixTotal / 100 + '€';
 
         // les enfants appartenant à bear //
         articlePanier.appendChild(picBearPanier);
@@ -82,13 +82,13 @@ if (products) {
         //on agit sur le click du bouton - pour reduire le nb d'article d'1
         moinsQuantitéPanier.addEventListener('click', () => {
             //si la quantité tombe à zéro, on déactive le bouton
-            if (products[i].quantité < 1) {
+            if (product[i].quantité < 1) {
                 moinsQuantitéPanier.setAttribute('disabled', 'true');
             } else {
                 //sinon on réduit la quantité de 1
                 moinsQuantitéPanier.removeAttribute('disabled');
-                products[i].quantité = products[i].quantité - 1;
-                localStorage.setItem('products', JSON.stringify(products));
+                product[i].quantité = product[i].quantité - 1;
+                localStorage.setItem('product', JSON.stringify(product));
             }
             //on recharge la page
             document.location.reload();
@@ -96,14 +96,14 @@ if (products) {
 
         //on agit sur le click du bouton + pour augmenter le nb d'article d'1
         plusQuantitéPanier.addEventListener('click', () => {
-            products[i].quantité = products[i].quantité + 1;
-            localStorage.setItem('products', JSON.stringify(products));
+            product[i].quantité = product[i].quantité + 1;
+            localStorage.setItem('product', JSON.stringify(product));
             //on recharge la page
             document.location.reload();
         });
 
         //Affichage quantité sur l'icone panier
-        nbArticle = nbArticle + products[i].quantité;
+        nbArticle = nbArticle + product[i].quantité;
         let nbCmde = document.getElementById('nbCmde');
         nbCmde.style.visibility = 'visible';
         nbCmde.textContent = nbArticle;
@@ -127,7 +127,7 @@ if (products) {
 
     //on agit sur le click du bouton "vider le panier" pour supprimer le storage en cours
     clearBtn.addEventListener('click', () => {
-        localStorage.clear('products', JSON.stringify(products));
+        localStorage.clear('product', JSON.stringify(product));
         //on recharge la page
         document.location.reload();
     });
@@ -174,17 +174,17 @@ if (products) {
 
 
     //label adresse
-    let adress = document.createElement('label');
-    adress.classList.add('adress');
-    adress.setAttribute('for', 'adress');
-    adress.style.display = 'flex';
-    adress.style.flexDirection = 'row';
-    adress.innerHTML = ('Adresse: <p id=adressP></p>');
+    let address = document.createElement('label');
+    address.classList.add('adress');
+    address.setAttribute('for', 'adress');
+    address.style.display = 'flex';
+    address.style.flexDirection = 'row';
+    address.innerHTML = ('Adresse: <p id=adressP></p>');
 
     //input de saisi de l'adresse
-    let adressI = document.createElement('input');
-    adressI.id = 'adress';
-    adressI.setAttribute('type', 'text');
+    let addressI = document.createElement('input');
+    addressI.id = 'adress';
+    addressI.setAttribute('type', 'text');
 
     //label de la ville
     let city = document.createElement('label');
@@ -224,8 +224,8 @@ if (products) {
     formulaire.appendChild(firstNameI);
     formulaire.appendChild(lastName);
     formulaire.appendChild(lastNameI);
-    formulaire.appendChild(adress);
-    formulaire.appendChild(adressI);
+    formulaire.appendChild(address);
+    formulaire.appendChild(addressI);
     formulaire.appendChild(city);
     formulaire.appendChild(cityI);
     formulaire.appendChild(mail);
@@ -246,8 +246,8 @@ if (products) {
         validLastName(this);
     });
     //adresse
-    adressI.addEventListener('change', function() {
-        validAdress(this);
+    addressI.addEventListener('change', function() {
+        validAddress(this);
     });
     //ville
     cityI.addEventListener('change', function() {
@@ -289,7 +289,7 @@ if (products) {
         }
     };
     //adresse
-    const validAdress = function(inputAdress) {
+    const validAddress = function(inputAdress) {
         let entreeReg = new RegExp(
             '[a-zA-Z0-9-]$', 'g'
         );
@@ -338,29 +338,47 @@ if (products) {
 
 
     const order = () => {
-            let firstName = document.getElementById('firstName').value;
-            let lastName = document.getElementById('lastName').value;
-            let adress = document.getElementById('adress').value;
-            let city = document.getElementById('city').value;
-            let email = document.getElementById('mail').value;
             //  bon de commande que l'on crée dans le tableau contact
+
+
             let contact = {
-                firstName: firstName,
-                lastName: lastName,
-                adress: adress,
-                city: city,
-                email: email,
-                products: localStorage.getItem('products')
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                address: document.getElementById('adress').value,
+                city: document.getElementById('city').value,
+                email: document.getElementById('mail').value,
+            };
+
+            products = [];
+            for (let i = 0; i < product.length; i++) {
+                products.push(product[i].id);
             }
-            localStorage.setItem('contact', JSON.stringify(contact));
-            id = [];
-            const facture = fetch('http://localhost:3000/api/teddies/order', {
-                method: "POST",
-                body: JSON.stringify(contact),
-                Headers: {
-                    "Content-Type": "application/json",
-                },
+
+            let FormClient = JSON.stringify({
+                contact,
+                products
             });
+
+            /* API AVEC FETCH */
+            fetch('http://localhost:3000/api/teddies/order', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': "application/json"
+                    },
+                    body: FormClient
+                })
+                .then(function(response) {
+                    return response.json()
+                })
+                .then(function(ted) {
+                    localStorage.setItem("contact", JSON.stringify(ted.contact));
+                    console.log("confirmation.html?orderId=" + ted.orderId);
+                    document.location.href = "confirmation.html?orderId=" + ted.orderId;
+                })
+                /* API - MESSAGE ERROR */
+                .catch(function(error) {
+                    console.log("Error");
+                });
         }
         // Evenement d'ajout du bon de commande
     contact.addEventListener('click', (event) => {

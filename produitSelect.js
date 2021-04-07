@@ -84,21 +84,21 @@ promise.then(response => {
                 couleur: oursOptionSelect.value,
                 prix: ours.price,
                 quantité: 1,
-                id: ours.id,
+                id: ours._id,
             };
-            let products = JSON.parse(localStorage.getItem('products'));
+            let product = JSON.parse(localStorage.getItem('product'));
 
             // function d'envois au panier
             const EnvoisDansLePanier = () => {
-                products.push(productId);
-                localStorage.setItem('products', JSON.stringify(products));
+                product.push(productId);
+                localStorage.setItem('product', JSON.stringify(product));
             };
 
             //si produit dans storage (produits=true)
-            if (products) {
-                for (let i = 0; i < products.length; i++) {
-                    let nomSelect = products[i].nom;
-                    let couleurSelect = products[i].couleur;
+            if (product) {
+                for (let i = 0; i < product.length; i++) {
+                    let nomSelect = product[i].nom;
+                    let couleurSelect = product[i].couleur;
 
                     if (ours.name !== nomSelect) {
                         //si l'article est différent
@@ -113,8 +113,8 @@ promise.then(response => {
                     } else if ((ours.name && oursOptionSelect.value) === (nomSelect && couleurSelect)) {
                         // Si le nom de l'article est déjà dans le panier et que la couleur est identique
                         //on ajoute 1 à sa quantité
-                        products[i].quantité = products[i].quantité + 1;
-                        localStorage.setItem('products', JSON.stringify(products));
+                        product[i].quantité = product[i].quantité + 1;
+                        localStorage.setItem('product', JSON.stringify(product));
                         break;
                     } else {
                         EnvoisDansLePanier();
@@ -124,7 +124,7 @@ promise.then(response => {
             }
             // si pas produit dans storage
             else {
-                products = [];
+                product = [];
                 EnvoisDansLePanier();
             }
             //on recharge la page
@@ -135,11 +135,11 @@ promise.then(response => {
 
 
 // Affichage Panier
-let products = JSON.parse(localStorage.getItem('products'));
-if (products) {
+let product = JSON.parse(localStorage.getItem('product'));
+if (product) {
     let nbArticle = 0
-    for (let i = 0; i < products.length; i++) {
-        nbArticle = nbArticle + products[i].quantité;
+    for (let i = 0; i < product.length; i++) {
+        nbArticle = nbArticle + product[i].quantité;
         let nbCmde = document.getElementById('nbCmde');
         nbCmde.style.visibility = 'visible';
         nbCmde.textContent = nbArticle;

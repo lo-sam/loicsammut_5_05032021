@@ -47,11 +47,11 @@ fetchOurs.then(response => {
 
 
 // Affichage Panier
-let products = JSON.parse(localStorage.getItem('products'));
-if (products) {
+let product = JSON.parse(localStorage.getItem('product'));
+if (product) {
     let nbArticle = 0
-    for (let i = 0; i < products.length; i++) {
-        nbArticle = nbArticle + products[i].quantité;
+    for (let i = 0; i < product.length; i++) {
+        nbArticle = nbArticle + product[i].quantité;
         let nbCmde = document.getElementById('nbCmde');
         nbCmde.style.visibility = 'visible';
         nbCmde.textContent = nbArticle;
