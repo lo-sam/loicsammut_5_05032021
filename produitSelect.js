@@ -94,7 +94,7 @@ promise.then(response => {
                 localStorage.setItem('product', JSON.stringify(product));
             };
 
-            //si produit dans storage (produits=true)
+            //si il y a un produit dans le storage (produits=true)
             if (product) {
                 for (let i = 0; i < product.length; i++) {
                     let nomSelect = product[i].nom;
@@ -124,6 +124,7 @@ promise.then(response => {
             }
             // si pas produit dans storage
             else {
+                //On crée un tableau product et on utilise notre fonction pour y ajouter l'article 
                 product = [];
                 EnvoisDansLePanier();
             }
@@ -134,7 +135,7 @@ promise.then(response => {
 });
 
 
-// Affichage Panier
+// Affichage de la quantité d'article sur l'icone Panier
 let product = JSON.parse(localStorage.getItem('product'));
 if (product) {
     let nbArticle = 0

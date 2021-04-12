@@ -1,17 +1,24 @@
+// Récupération des données de l'API
 const fetchOurs = fetch('http://localhost:3000/api/teddies');
-
+// Réponse de la requête faites à l'API
 fetchOurs.then(response => {
     return response.json();
+    // Fonction qui pour chaque ligne du tableau va créér les éléments de notre page
 }).then(listeTeddies => {
     listeTeddies.forEach(function(ours) {
+        //on crée une liste
         let bear = document.createElement('li');
+        //on crée un lien
         let aBear = document.createElement('a');
+        //Ajout de l'ID du produit sélectionné à la suite de l'URL de notre page produit.html pour ouvrir la fiche du produit sélectionné
         aBear.setAttribute('href', 'produit.html?id=' + ours._id)
+            //on récupère l'image via l'API
         let picBear = document.createElement('img');
         picBear.classList.add('picted');
         picBear.setAttribute('src', ours.imageUrl);
         let oursInfo = document.createElement('div');
         oursInfo.classList.add('info');
+        //on récupère le nom via l'API
         let oursName = document.createElement('div');
         oursName.classList.add('name');
         oursName.textContent = 'Nom: ' +
@@ -19,10 +26,11 @@ fetchOurs.then(response => {
         let oursDescriptionTitle = document.createElement('div');
         oursDescriptionTitle.classList.add('descriptionTitle');
         oursDescriptionTitle.textContent = 'Description: ';
-
+        //on récupère la description via l'API
         let oursDescription = document.createElement('div');
         oursDescription.classList.add('description');
         oursDescription.textContent = ours.description;
+        //on récupère le prix via l'API
         let oursPrice = document.createElement('div');
         oursPrice.classList.add('price');
         oursPrice.textContent = 'Prix: ' +
@@ -46,7 +54,7 @@ fetchOurs.then(response => {
 
 
 
-// Affichage Panier
+// Affichage de la quantité d'article sur l'icone Panier
 let product = JSON.parse(localStorage.getItem('product'));
 if (product) {
     let nbArticle = 0

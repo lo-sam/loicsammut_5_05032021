@@ -1,0 +1,28 @@
+#merci {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    .nom,
+    .numCommande {
+        padding: 10px;
+    }
+    .nom {
+        line-height: 30px;
+    }
+    .listeConfirm {
+        margin: 10px auto 10px auto;
+        width: 90%;
+        padding: 10px;
+        border: 1px $color-prim solid;
+        display: flex;
+        .miseEnForme {
+            padding: 5px 15px;
+            margin: auto;
+        }
+    }
+    #prixTotalPanier {
+        border-bottom: 1px #925DF5 solid;
+        margin: 20px auto 100px auto;
+        padding: 5px 2px 5px 2px;
+    }
+}

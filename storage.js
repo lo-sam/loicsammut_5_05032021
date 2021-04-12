@@ -1,3 +1,4 @@
+// On récupère les infos du localStorage
 let product = JSON.parse(localStorage.getItem('product'));
 
 
@@ -65,23 +66,25 @@ if (product) {
         oursPricePanier.textContent = 'Prix: ' +
             product[i].prix / 100 + '€' + ' unitaire, soit un total de: ' + prixTotal / 100 + '€';
 
-        // les enfants appartenant à bear //
+        // les enfants appartenant à articlePanier
         articlePanier.appendChild(picBearPanier);
         articlePanier.appendChild(oursInfoPanier);
+        // les enfants appartenant à oursInfoPanier
         oursInfoPanier.appendChild(oursNamePanier);
         oursInfoPanier.appendChild(ourscouleurPanier);
         oursInfoPanier.appendChild(oursPricePanier);
         oursInfoPanier.appendChild(oursInfoQuantPanier);
+        // les enfants appartenant à oursInfoQuantPanier
         oursInfoQuantPanier.appendChild(oursLegQuantitéPanier);
         oursInfoQuantPanier.appendChild(moinsQuantitéPanier);
         oursInfoQuantPanier.appendChild(oursQuantitéPanier);
         oursInfoQuantPanier.appendChild(plusQuantitéPanier);
-
+        //articlePanier est enfant de l'élément HTML avec l'ID panierClient
         document.getElementById('panierClient').appendChild(articlePanier);
 
         //on agit sur le click du bouton - pour reduire le nb d'article d'1
         moinsQuantitéPanier.addEventListener('click', () => {
-            //si la quantité tombe à zéro, on déactive le bouton
+            //si la quantité est à zéro, on déactive le bouton
             if (product[i].quantité < 1) {
                 moinsQuantitéPanier.setAttribute('disabled', 'true');
             } else {
@@ -218,8 +221,10 @@ if (product) {
     contact.setAttribute('type', 'submit');
     contact.setAttribute('value', 'Valider la commande');
 
+    // les enfants appartenant à form
     document.getElementById('form').appendChild(separateur);
     document.getElementById('form').appendChild(formulaire);
+    // les enfants appartenant à formulaire
     formulaire.appendChild(firstName);
     formulaire.appendChild(firstNameI);
     formulaire.appendChild(lastName);
@@ -258,19 +263,21 @@ if (product) {
         validMail(this);
     });
 
-    // on crée une expression régulière pour définir ce qui est autorisé à la saisie
 
+    // on crée une expression régulière pour définir ce qui est autorisé à la saisie
     //prenom
-    const validFirstName = function(inputfirstName) {
+    const validFirstName = function(inputFirstName) {
         let entreeReg = new RegExp(
             '[a-zA-Z]{2,15}$', 'g'
         );
-        if (entreeReg.test(inputfirstName.value)) {
+        if (entreeReg.test(inputFirstName.value)) {
             firstNameP.style.color = '#55A500';
             firstNameP.innerHTML = '<i class="fas fa-check"></i>';
+            return 1;
         } else {
             firstNameP.style.color = '#A50000';
             firstNameP.innerHTML = 'Saisie non valide';
+            return 0;
 
         }
     };
@@ -282,6 +289,7 @@ if (product) {
         if (entreeReg.test(inputLastName.value)) {
             lastNameP.style.color = '#55A500';
             lastNameP.innerHTML = '<i class="fas fa-check"></i>';
+            return 1;
         } else {
             lastNameP.style.color = '#A50000';
             lastNameP.innerHTML = 'Saisie non valide';
@@ -296,6 +304,7 @@ if (product) {
         if (entreeReg.test(inputAdress.value)) {
             adressP.style.color = '#55A500';
             adressP.innerHTML = '<i class="fas fa-check"></i>';
+            return 1;
         } else {
             adressP.style.color = '#A50000';
             adressP.innerHTML = 'Saisie non valide';
@@ -310,6 +319,7 @@ if (product) {
         if (entreeReg.test(inputCity.value)) {
             cityP.style.color = '#55A500';
             cityP.innerHTML = '<i class="fas fa-check"></i>';
+            return 1;
         } else {
             cityP.style.color = '#A50000';
             cityP.innerHTML = 'Saisie non valide';
@@ -324,6 +334,7 @@ if (product) {
         if (mailReg.test(inputMail.value)) {
             mailP.style.color = '#55A500';
             mailP.innerHTML = '<i class="fas fa-check"></i>';
+            return 1;
         } else {
             mailP.style.color = '#A50000';
             mailP.innerHTML = 'Adresse e-mail non valide';
@@ -337,56 +348,68 @@ if (product) {
 
 
 
+    // fonction qui crée le bon de commande que l'on crée dans le tableau contact
     const order = () => {
-            //  bon de commande que l'on crée dans le tableau contact
 
-
-            let contact = {
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                address: document.getElementById('adress').value,
-                city: document.getElementById('city').value,
-                email: document.getElementById('mail').value,
-            };
-
-            products = [];
-            for (let i = 0; i < product.length; i++) {
-                products.push(product[i].id);
-            }
-
-            let FormClient = JSON.stringify({
-                contact,
-                products
-            });
-
-            /* API AVEC FETCH */
-            fetch('http://localhost:3000/api/teddies/order', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': "application/json"
-                    },
-                    body: FormClient
-                })
-                .then(function(response) {
-                    return response.json()
-                })
-                .then(function(ted) {
-                    localStorage.setItem("contact", JSON.stringify(ted.contact));
-                    console.log("confirmation.html?orderId=" + ted.orderId);
-                    document.location.href = "confirmation.html?orderId=" + ted.orderId;
-                })
-                /* API - MESSAGE ERROR */
-                .catch(function(error) {
-                    console.log("Error");
-                });
+        //objet contact
+        let contact = {
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            address: document.getElementById('adress').value,
+            city: document.getElementById('city').value,
+            email: document.getElementById('mail').value,
+        };
+        //on crée le tableau products et on y met les id de nos produits
+        products = [];
+        for (let i = 0; i < product.length; i++) {
+            products.push(product[i].id);
         }
-        // Evenement d'ajout du bon de commande
+        //met au format JSON l'objet contact et le tableau products
+        let FormClient = JSON.stringify({
+            contact,
+            products
+        });
+
+        // envois des données vers l'API
+        fetch('http://localhost:3000/api/teddies/order', {
+                method: 'POST',
+                headers: {
+                    'content-type': "application/json"
+                },
+                body: FormClient
+            })
+            //on récupère la réponce sous forme d'objet
+            .then(function(response) {
+                return response.json()
+            })
+            //on envois le contact et ouvre la page confirmation.html avec l'ID de commande
+            .then(function(ted) {
+                localStorage.setItem("contact", JSON.stringify(ted.contact));
+                console.log("confirmation.html?orderId=" + ted.orderId);
+                document.location.href = "confirmation.html?orderId=" + ted.orderId;
+            })
+            // si la promesse n'aboutie pas 
+            .catch(function(error) {
+                console.log("Error");
+            });
+    }
+
+    // Evenement d'ajout du bon de commande et vérification que tout les champs sont bons
     contact.addEventListener('click', (event) => {
+        //on déactive l'effet par défaut du bouton
         event.preventDefault();
-        order();
+        //si les champs sont bien remplis on envois le formulaire
+        if (validFirstName(firstNameI) && validLastName(lastNameI) && validAddress(addressI) && validCity(cityI) && validMail(mailI)) {
+            order();
+            //sinon on ouvre un alert qui nous prévient que les champs ne sont pas correctement saisis
+        } else {
+            alert("La saisie du formulaire n\'est pas correct");
+
+        }
+
     });
 
-
+    // si le panier est vide on le marque sur la page
 } else {
     let titrePanier = document.getElementById('titrePanier');
     titrePanier.innerHTML = 'Votre panier est vide!'
