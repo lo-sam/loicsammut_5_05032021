@@ -5,8 +5,8 @@ let idUrl = window.location.search.substr(4);
 const promise = fetch('http://localhost:3000/api/teddies/' + idUrl);
 promise.then(response => {
     const oursSelect = response.json();
-
     oursSelect.then((ours) => {
+        console.log(ours);
 
         // création du contenant où l'article apparaitra //
         let bear = document.createElement('div');
@@ -71,6 +71,7 @@ promise.then(response => {
         // bear est enfant de item //
         document.getElementById('item').appendChild(bear);
 
+        ///////////////////////////////////////// AJOUT AU PANIER /////////////////////////////////////////
 
         // Evenement d'ajout au panier
         const panier = document.getElementById('panier');

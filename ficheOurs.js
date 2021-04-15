@@ -2,9 +2,12 @@
 const fetchOurs = fetch('http://localhost:3000/api/teddies');
 // Réponse de la requête faites à l'API
 fetchOurs.then(response => {
+    console.log(response.status)
     return response.json();
     // Fonction qui pour chaque ligne du tableau va créér les éléments de notre page
 }).then(listeTeddies => {
+    console.log('résultat listeTeddies')
+    console.log(listeTeddies);
     listeTeddies.forEach(function(ours) {
         //on crée une liste
         let bear = document.createElement('li');
