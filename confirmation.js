@@ -21,7 +21,7 @@ document.getElementById('merci').appendChild(nbCmde);
 
 // boucle pour afficher chaque article commandé
 for (let i = 0; i < produitCmde.length; i++) {
-    //on crée un liste
+    //on crée une liste
     let listeArticle = document.createElement('ul');
     let article = document.createElement('li');
     article.classList.add('listeConfirm');
@@ -48,7 +48,7 @@ for (let i = 0; i < produitCmde.length; i++) {
     let quantitésArticle = document.createElement('div');
     quantitésArticle.classList.add('miseEnForme');
     quantitésArticle.textContent = "Prix Total: " + ((produitCmde[i].prix / 100) * produitCmde[i].quantité) + '€';
-    //on calcul le prix total de la commande
+    //on calcule le prix total de la commande
     let prixTotal = produitCmde[i].prix * produitCmde[i].quantité;
     prixTotalDuPanier = (prixTotalDuPanier + prixTotal);
 

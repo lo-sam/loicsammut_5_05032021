@@ -82,9 +82,9 @@ if (product) {
         //articlePanier est enfant de l'élément HTML avec l'ID panierClient
         document.getElementById('panierClient').appendChild(articlePanier);
 
-        //on agit sur le click du bouton - pour reduire le nb d'article d'1
+        //on agit sur le click du bouton - pour réduire le nb d'article d'1
         moinsQuantitéPanier.addEventListener('click', () => {
-            //si la quantité est à zéro, on déactive le bouton
+            //si la quantité est à zéro, on désactive le bouton
             if (product[i].quantité < 1) {
                 moinsQuantitéPanier.setAttribute('disabled', 'true');
             } else {
@@ -105,7 +105,7 @@ if (product) {
             document.location.reload();
         });
 
-        //Affichage quantité sur l'icone panier
+        //Affichage quantité sur l'icône panier
         nbArticle = nbArticle + product[i].quantité;
         let nbCmde = document.getElementById('nbCmde');
         nbCmde.style.visibility = 'visible';
@@ -139,7 +139,7 @@ if (product) {
     ////////////////////FORMULAIRE////////////////////
 
 
-    // import d un séparateur pour délimiter les articles du formulaire
+    // import d'un séparateur pour délimiter les articles du formulaire
     let separateur = document.createElement('img');
     separateur.setAttribute('src', ' images/line.png ');
     separateur.classList.add('separateur');
@@ -241,8 +241,8 @@ if (product) {
 
     /////////////////////////// VERIFICATION DES CHAMPS ///////////////////////////
 
-    // on écoute les changements des inputs nom prenom adresse ville et mail
-    //prenom
+    // on écoute les changements des inputs nom prénom adresse ville et mail
+    //prénom
     firstNameI.addEventListener('change', function() {
         validFirstName(this);
     });
@@ -265,7 +265,7 @@ if (product) {
 
 
     // on crée une expression régulière pour définir ce qui est autorisé à la saisie
-    //prenom
+    //prénom
     const validFirstName = function(inputFirstName) {
         let entreeReg = new RegExp(
             '[a-zA-Z]{2,15}$', 'g'
@@ -378,11 +378,11 @@ if (product) {
                 },
                 body: FormClient
             })
-            //on récupère la réponce sous forme d'objet
+            //on récupère la réponse sous forme d'objet
             .then(function(response) {
                 return response.json()
             })
-            //on envois le contact et ouvre la page confirmation.html avec l'ID de commande
+            //on envoit le contact et ouvre la page confirmation.html avec l'ID de commande
             .then(function(ted) {
                 localStorage.setItem("contact", JSON.stringify(ted.contact));
                 console.log("confirmation.html?orderId=" + ted.orderId);
@@ -394,11 +394,11 @@ if (product) {
             });
     }
 
-    // Evenement d'ajout du bon de commande et vérification que tout les champs sont bons
+    // Evénement d'ajout du bon de commande et vérification que tous les champs sont bons
     contact.addEventListener('click', (event) => {
-        //on déactive l'effet par défaut du bouton
+        //on désactive l'effet par défaut du bouton
         event.preventDefault();
-        //si les champs sont bien remplis on envois le formulaire
+        //si les champs sont bien remplis on envoit le formulaire
         if (validFirstName(firstNameI) && validLastName(lastNameI) && validAddress(addressI) && validCity(cityI) && validMail(mailI)) {
             order();
             //sinon on ouvre un alert qui nous prévient que les champs ne sont pas correctement saisis

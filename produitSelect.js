@@ -35,7 +35,7 @@ promise.then(response => {
         oursDescription.classList.add('description');
         oursDescription.textContent = ours.description;
 
-        // création du label et du select pour selectionner la couleur //
+        // création du label et du select pour sélectionner la couleur //
         let oursOptionLabel = document.createElement('label');
         oursOptionLabel.id = 'optionLabel';
         oursOptionLabel.innerHTML = 'Couleurs disponibles :';
@@ -43,7 +43,7 @@ promise.then(response => {
         oursOptionSelect.id = 'colors';
         oursOptionSelect.setAttribute('name', ours.colors);
 
-        // boucle où on ajoute un champ couleur pour chaque ligne du tableau colors //
+        // boucle où l'on ajoute un champ couleur pour chaque ligne du tableau colors //
         for (let i = 0; i < ours.colors.length; i++) {
             let option = document.createElement('option');
             option.value = ours.colors[i];
@@ -73,7 +73,7 @@ promise.then(response => {
 
         ///////////////////////////////////////// AJOUT AU PANIER /////////////////////////////////////////
 
-        // Evenement d'ajout au panier
+        // Evénement d'ajout au panier
         const panier = document.getElementById('panier');
         panier.addEventListener('click', (event) => {
             event.preventDefault();
@@ -89,7 +89,7 @@ promise.then(response => {
             };
             let product = JSON.parse(localStorage.getItem('product'));
 
-            // function d'envois au panier
+            // fonction d'envois au panier
             const EnvoisDansLePanier = () => {
                 product.push(productId);
                 localStorage.setItem('product', JSON.stringify(product));
@@ -107,7 +107,7 @@ promise.then(response => {
                         break;
 
                     } else if ((ours.name === nomSelect) && (couleurSelect !== oursOptionSelect.value)) {
-                        //si meme nom mais couleur differente, on ajoute l article au panier
+                        //si même nom mais couleur differente, on ajoute l'article au panier
                         EnvoisDansLePanier();
                         break;
 
@@ -136,7 +136,7 @@ promise.then(response => {
 });
 
 
-// Affichage de la quantité d'article sur l'icone Panier
+// Affichage de la quantité d'article sur l'icône Panier
 let product = JSON.parse(localStorage.getItem('product'));
 if (product) {
     let nbArticle = 0

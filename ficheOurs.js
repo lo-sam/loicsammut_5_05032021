@@ -1,6 +1,6 @@
 // Récupération des données de l'API
 const fetchOurs = fetch('http://localhost:3000/api/teddies');
-// Réponse de la requête faites à l'API
+// Réponse de la requête faite à l'API
 fetchOurs.then(response => {
     console.log(response.status)
     return response.json();
@@ -57,7 +57,7 @@ fetchOurs.then(response => {
 
 
 
-// Affichage de la quantité d'article sur l'icone Panier
+// Affichage de la quantité d'article sur l'icône Panier
 let product = JSON.parse(localStorage.getItem('product'));
 if (product) {
     let nbArticle = 0
