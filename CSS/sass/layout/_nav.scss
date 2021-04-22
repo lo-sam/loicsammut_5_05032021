@@ -2,28 +2,44 @@ nav {
     & ul {
         display: flex;
         justify-content: flex-end;
-        position: absolute;
-        width: 100%;
         li {
             margin: 20px 0 10px 0;
             vertical-align: bottom;
             margin-right: 1rem;
             padding-top: 4rem;
             transition: transform 0.5s;
+            @include md {
+                padding-top: 3rem;
+                margin: 49px 0 10px 0;
+            }
+            @include lg {
+                padding-top: 5rem;
+            }
+            @include xl {
+                padding-top: 7.5rem;
+            }
         }
         & li:hover {
             transform: scale(1.2);
         }
         #liAcc {
-            position: absolute;
-            left: 800px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            @include md {
+                font-size: 2rem;
+            }
         }
         #liPanier {
-            margin: -10px 10px 0 0;
-            position: absolute;
-            left: 900px;
+            margin: -5px 20px 0 0;
+            position: relative;
+            @include md {
+                margin: 15px 20px 0 20px;
+            }
             & .panierImg {
                 width: 50px;
+                @include md {
+                    width: 65px;
+                }
             }
             #nbCmde {
                 left: 55%;
@@ -34,6 +50,16 @@ nav {
                 border-radius: 50%;
                 padding: 3px 5px;
                 visibility: hidden;
+                @include md {
+                    padding: 10px 12px;
+                    font-size: 1.5rem;
+                }
+                @include lg {
+                    top: 120px;
+                }
+                @include xl {
+                    top: 160px;
+                }
             }
         }
     }

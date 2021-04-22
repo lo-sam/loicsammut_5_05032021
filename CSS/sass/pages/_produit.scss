@@ -1,21 +1,35 @@
 #item {
     margin: 30px 0 50px 0;
     border: 1px $color-prim solid;
-    width: 70%;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    width: 90%;
     margin: 10px auto 10px auto;
     display: flex;
     flex-direction: column-reverse;
     #oursItem {
-        // margin: 10px auto 10px auto;
-        // width: 70%;
         padding: 10px;
         transition: transform 0.5s;
         background-color: $color-back;
         display: flex;
+        flex-direction: column;
+        @include md {}
     }
     .picted {
-        width: 400px;
-        height: 400px;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        border-radius: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        width: 20rem;
+        height: 20rem;
+        object-fit: cover;
+        object-position: center;
+        @include md {
+            width: 400px;
+            height: 400px;
+        }
     }
     .info {
         padding: 0 20px;
@@ -38,7 +52,10 @@
 #optionLabel,
 #colors,
 #panier {
-    margin: 10px 0 20px 10px;
+    margin: 0px 0 0px 10px;
+    @include lg {
+        margin: 10px 0 20px 10px;
+    }
 }
 
 #colors {
@@ -53,6 +70,7 @@
     padding-right: 15%;
     #panier {
         padding: 5px 2px 5px 2px;
+        margin-bottom: 10px;
         font-family: 'aaarghnormal';
         font-weight: bold;
         color: $color-font-foot;

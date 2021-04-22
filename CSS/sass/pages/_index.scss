@@ -1,28 +1,62 @@
 h2 {
-    margin-left: 30px;
+    margin-left: 2%;
     font-size: 1.2rem;
+    @include md {
+        font-size: 1.5rem;
+    }
 }
 
 #produits {
     margin: 30px 0 50px 0;
     ul li {
+        width: 90%;
         margin: 10px auto 10px auto;
-        width: 50%;
         padding: 10px;
         border: 1px $color-prim solid;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        border-radius: 15px;
         transition: transform 0.5s;
         background-color: $color-back;
-        &:hover {
-            transform: scale(1.2);
+        @include lg {
+            width: 70%;
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+        @include xl {
+            width: 50%;
         }
         a {
             display: flex;
+            flex-direction: column;
+            @include md {
+                flex-direction: row;
+            }
             .picted {
-                width: 270px;
-                height: 270px;
+                -webkit-border-radius: 15px;
+                -moz-border-radius: 15px;
+                border-radius: 15px;
+                object-fit: cover;
+                object-position: center;
+                width: 20em;
+                height: 20em;
+                margin: auto;
+                @include lg {
+                    width: 30em;
+                    height: 30em;
+                }
+                @include lg {
+                    width: 18em;
+                    height: 18em;
+                }
             }
             .info {
-                padding: 20px;
+                padding: 0%;
+                @include md {
+                    font-size: 1.5rem;
+                    padding: 20px;
+                }
                 .name {
                     padding: 10px 0 10px 10px;
                 }
