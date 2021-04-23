@@ -11,7 +11,6 @@
     #oursItem {
         padding: 10px;
         transition: transform 0.5s;
-        background-color: $color-back;
         display: flex;
         flex-direction: column;
         @include md {}
