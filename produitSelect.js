@@ -82,7 +82,6 @@ promise.then(response => {
             let productId = {
                 nom: ours.name,
                 image: ours.imageUrl,
-                couleur: oursOptionSelect.value,
                 prix: ours.price,
                 quantité: 1,
                 id: ours._id,
@@ -95,33 +94,11 @@ promise.then(response => {
                 localStorage.setItem('product', JSON.stringify(product));
             };
 
-            //si il y a un produit dans le storage (produits=true)
+
             if (product) {
-                for (let i = 0; i < product.length; i++) {
-                    let nomSelect = product[i].nom;
-                    let couleurSelect = product[i].couleur;
+                //si il y a un produit dans le storage (produits=true)
 
-                    if (ours.name !== nomSelect) {
-                        //si l'article est différent
-                        EnvoisDansLePanier();
-                        break;
-
-                    } else if ((ours.name === nomSelect) && (couleurSelect !== oursOptionSelect.value)) {
-                        //si même nom mais couleur differente, on ajoute l'article au panier
-                        EnvoisDansLePanier();
-                        break;
-
-                    } else if ((ours.name && oursOptionSelect.value) === (nomSelect && couleurSelect)) {
-                        // Si le nom de l'article est déjà dans le panier et que la couleur est identique
-                        //on ajoute 1 à sa quantité
-                        product[i].quantité = product[i].quantité + 1;
-                        localStorage.setItem('product', JSON.stringify(product));
-                        break;
-                    } else {
-                        EnvoisDansLePanier();
-                        break;
-                    }
-                }
+                EnvoisDansLePanier();
             }
             // si pas produit dans storage
             else {

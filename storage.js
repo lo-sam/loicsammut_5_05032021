@@ -53,12 +53,6 @@ if (product) {
         plusQuantitéPanier.setAttribute('type', 'submit');
         plusQuantitéPanier.setAttribute('value', '+');
 
-        // couleur du produit //    
-        let ourscouleurPanier = document.createElement('div');
-        ourscouleurPanier.classList.add('couleurPanier');
-        ourscouleurPanier.textContent = 'Couleur: ' +
-            product[i].couleur;
-
         // prix du produit //
         let oursPricePanier = document.createElement('div');
         oursPricePanier.classList.add('pricePanier');
@@ -71,7 +65,6 @@ if (product) {
         articlePanier.appendChild(oursInfoPanier);
         // les enfants appartenant à oursInfoPanier
         oursInfoPanier.appendChild(oursNamePanier);
-        oursInfoPanier.appendChild(ourscouleurPanier);
         oursInfoPanier.appendChild(oursPricePanier);
         oursInfoPanier.appendChild(oursInfoQuantPanier);
         // les enfants appartenant à oursInfoQuantPanier

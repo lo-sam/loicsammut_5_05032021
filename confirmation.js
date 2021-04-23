@@ -31,10 +31,6 @@ for (let i = 0; i < produitCmde.length; i++) {
     nomArticle.classList.add('miseEnForme');
     nomArticle.textContent = "Ourson " +
         produitCmde[i].nom;
-    //on affiche la couleur du produit
-    let colorArticle = document.createElement('div');
-    colorArticle.classList.add('miseEnForme');
-    colorArticle.textContent = ' de couleur: ' + produitCmde[i].couleur;
     //on affiche son prix
     let prixArticle = document.createElement('div');
     prixArticle.classList.add('miseEnForme');
@@ -56,7 +52,6 @@ for (let i = 0; i < produitCmde.length; i++) {
 
     listeArticle.appendChild(article);
     article.appendChild(nomArticle);
-    article.appendChild(colorArticle);
     article.appendChild(prixArticle);
     article.appendChild(quantitéArticle);
     article.appendChild(quantitésArticle);
