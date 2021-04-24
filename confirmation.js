@@ -8,15 +8,20 @@ let prixTotalDuPanier = 0;
 // information du client 
 let nom = document.createElement('div');
 nom.classList.add('nom');
-nom.innerHTML = 'Bonjour ' + clientCmde.firstName + ' ' + clientCmde.lastName + ' <br> merci pour votre commande';
-
+nom.innerHTML = clientCmde.firstName + ' ' + clientCmde.lastName;
 // numéro de la commande
+let order = document.createElement('div');
+order.classList.add('order');
 let nbCmde = document.createElement('div');
 nbCmde.classList.add('numCommande');
-nbCmde.textContent = 'numéro de commande : ' + idUrl;
-
+nbCmde.textContent = 'numéro de commande : ';
+let nbOrder = document.createElement('div');
+nbOrder.classList.add('nbOrder');
+nbOrder.textContent = idUrl;
+order.appendChild(nbCmde);
+order.appendChild(nbOrder);
 document.getElementById('merci').appendChild(nom);
-document.getElementById('merci').appendChild(nbCmde);
+document.getElementById('merci').appendChild(order);
 
 
 // boucle pour afficher chaque article commandé
@@ -25,24 +30,22 @@ for (let i = 0; i < produitCmde.length; i++) {
     let listeArticle = document.createElement('ul');
     let article = document.createElement('li');
     article.classList.add('listeConfirm');
-    article.style.display = 'flex';
     //on affiche le nom du produit
     let nomArticle = document.createElement('div');
-    nomArticle.classList.add('miseEnForme');
-    nomArticle.textContent = "Ourson " +
-        produitCmde[i].nom;
+    nomArticle.classList.add('miseEnFormeN');
+    nomArticle.textContent = produitCmde[i].nom;
     //on affiche son prix
     let prixArticle = document.createElement('div');
-    prixArticle.classList.add('miseEnForme');
+    prixArticle.classList.add('miseEnFormePU');
     prixArticle.innerHTML = 'Prix unitaire: ' +
         produitCmde[i].prix / 100 + '€';
     //on affiche la quantité commandée
     let quantitéArticle = document.createElement('div');
-    quantitéArticle.classList.add('miseEnForme');
+    quantitéArticle.classList.add('miseEnFormeQ');
     quantitéArticle.innerHTML = 'Quantité: ' + produitCmde[i].quantité;
     //on affiche le prix total pour ce produit
     let quantitésArticle = document.createElement('div');
-    quantitésArticle.classList.add('miseEnForme');
+    quantitésArticle.classList.add('miseEnFormePT');
     quantitésArticle.textContent = "Prix Total: " + ((produitCmde[i].prix / 100) * produitCmde[i].quantité) + '€';
     //on calcule le prix total de la commande
     let prixTotal = produitCmde[i].prix * produitCmde[i].quantité;

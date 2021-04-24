@@ -24,8 +24,7 @@ fetchOurs.then(response => {
         //on récupère le nom via l'API
         let oursName = document.createElement('div');
         oursName.classList.add('name');
-        oursName.textContent = 'Nom: ' +
-            ours.name;
+        oursName.textContent = ours.name;
         let oursDescriptionTitle = document.createElement('div');
         oursDescriptionTitle.classList.add('descriptionTitle');
         oursDescriptionTitle.textContent = 'Description: ';

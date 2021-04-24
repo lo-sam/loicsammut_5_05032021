@@ -1,8 +1,8 @@
 #articlePanier {
     .separateur {
         width: 100%;
-        height: 10px;
-        margin: 20px 0 20px 0;
+        border-bottom: 1px solid $color-prim;
+        margin: 30px 0 50px 0;
     }
 }
 
@@ -43,14 +43,57 @@
     .infoPanier {
         padding-top: 15px;
         @include md {
-            padding: 20px;
-            margin-left: 5%;
+            margin-top: 20px;
+            padding: 10px;
         }
-        .namePanier,
-        .couleurPanier,
-        .pricePanier {
+        .price {
+            justify-content: center;
             padding: 10px 0 0 10px;
+            display: flex;
             @include md {
+                margin-right: auto;
+                margin-left: auto;
+                flex-wrap: wrap;
+                padding: 10px 0 10px 10px;
+            }
+            @include lg {
+                padding: 15px 0 20px 10px;
+            }
+            .pricePanier,
+            .pricePanierUnit,
+            .pricePanierT {
+                margin-right: 5px;
+            }
+            .pricePanier,
+            .pricePanierT {
+                padding-top: 8px;
+            }
+            .pricePanierUnit,
+            .pricePanierTotal {
+                color: $color-prim;
+                font-weight: bold;
+                font-size: 1.5rem;
+            }
+            .pricePanierUnit {
+                @include md {
+                    margin-right: 5px;
+                }
+                @include lg {
+                    margin-right: 5px;
+                }
+                @include xl {
+                    margin-right: 5px;
+                }
+            }
+        }
+        .namePanier {
+            color: $color-prim;
+            font-weight: bold;
+            font-size: 1.5rem;
+            padding: 10px 0 0 10px;
+            text-align: center;
+            @include md {
+                text-align: initial;
                 padding: 10px 0 10px 10px;
             }
             @include lg {
@@ -60,6 +103,12 @@
     }
     .oursInfoQuantPanier {
         display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        @include md {
+            justify-content: initial;
+        }
         .légendeQuantitéPanier {
             padding: 10px 0 0 10px;
         }
@@ -77,19 +126,21 @@
 #prixTotalPanierCmde {
     display: flex;
     #prixTotalPanier {
+        color: $color-prim;
+        font-weight: bold;
+        font-size: 1.5rem;
         border-bottom: 1px $color-prim solid;
         margin: 20px auto;
         padding: 5px 2px 5px 2px;
         font-family: 'aaarghnormal';
-        font-weight: bold;
-        color: $color-text;
     }
     #panier {
         margin: 20px auto;
         padding: 5px 2px 5px 2px;
         font-family: 'aaarghnormal';
         font-weight: bold;
-        color: $color-font-foot;
+        color: #FFF;
+        font-size: 1.5rem;
         background-color: $color-prim;
         box-shadow: 2px 2px 1px $color-sec;
         border: 0;
@@ -116,6 +167,7 @@
             padding: 15px;
         }
         label {
+            font-weight: bold;
             margin: 0 0 5px 0;
         }
         input {
@@ -126,6 +178,7 @@
             padding: 5px 2px 5px 2px;
             font-family: 'aaarghnormal';
             font-weight: bold;
+            font-size: 1.5rem;
             color: $color-font-foot;
             background-color: $color-prim;
             box-shadow: 2px 2px 1px $color-sec;

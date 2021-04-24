@@ -4,13 +4,28 @@
     flex-direction: column;
     font-weight: bold;
     .nom,
-    .numCommande {
+    .numCommande,
+    .nbOrder {
         padding: 10px;
     }
     .nom {
+        color: $color-prim;
+        font-weight: bold;
+        font-size: 1.5rem;
         line-height: 30px;
     }
+    .order {
+        @include md {
+            display: flex;
+        }
+        .nbOrder {
+            color: $color-prim;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+    }
     .listeConfirm {
+        display: flex;
         margin: 10px auto 10px auto;
         width: 70%;
         padding: 10px;
@@ -24,13 +39,26 @@
             width: 90%;
             flex-direction: row;
         }
-        .miseEnForme {
+        .miseEnFormeN,
+        .miseEnFormePU,
+        .miseEnFormeQ,
+        .miseEnFormePT {
             padding: 5px 15px;
             margin: auto;
         }
+        .miseEnFormePT,
+        .miseEnFormeN {
+            color: $color-prim;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
     }
     #prixTotalPanier {
-        border-bottom: 1px #925DF5 solid;
+        border-bottom: 1px $color-prim solid;
+        text-align: center;
+        color: $color-prim;
+        font-weight: bold;
+        font-size: 1.5rem;
         margin: 20px auto 100px auto;
         padding: 5px 2px 5px 2px;
     }

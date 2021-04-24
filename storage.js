@@ -23,8 +23,7 @@ if (product) {
         // Nom du produit //
         let oursNamePanier = document.createElement('div');
         oursNamePanier.classList.add('namePanier');
-        oursNamePanier.textContent = 'Nom: ' +
-            product[i].nom;
+        oursNamePanier.textContent = product[i].nom;
 
 
         // création du contenant pour afficher les quantités //
@@ -54,24 +53,40 @@ if (product) {
         plusQuantitéPanier.setAttribute('value', '+');
 
         // prix du produit //
+        let oursPrice = document.createElement('div');
+        oursPrice.classList.add('price');
         let oursPricePanier = document.createElement('div');
         oursPricePanier.classList.add('pricePanier');
         let prixTotal = product[i].prix * product[i].quantité;
-        oursPricePanier.textContent = 'Prix: ' +
-            product[i].prix / 100 + '€' + ' unitaire, soit un total de: ' + prixTotal / 100 + '€';
+        oursPricePanier.textContent = 'Prix unitaire: ';
+        oursPricePanierUnit = document.createElement('div');
+        oursPricePanierUnit.classList.add('pricePanierUnit');
+        oursPricePanierUnit.textContent = product[i].prix / 100 + '€';
+        oursPricePanierT = document.createElement('div');
+        oursPricePanierT.classList.add('pricePanierT');
+        oursPricePanierT.textContent = ' soit un total de: ';
+        oursPricePanierTotal = document.createElement('div');
+        oursPricePanierTotal.classList.add('pricePanierTotal');
+        oursPricePanierTotal.textContent = prixTotal / 100 + '€';
 
         // les enfants appartenant à articlePanier
         articlePanier.appendChild(picBearPanier);
         articlePanier.appendChild(oursInfoPanier);
         // les enfants appartenant à oursInfoPanier
         oursInfoPanier.appendChild(oursNamePanier);
-        oursInfoPanier.appendChild(oursPricePanier);
         oursInfoPanier.appendChild(oursInfoQuantPanier);
+        oursInfoPanier.appendChild(oursPrice);
         // les enfants appartenant à oursInfoQuantPanier
         oursInfoQuantPanier.appendChild(oursLegQuantitéPanier);
         oursInfoQuantPanier.appendChild(moinsQuantitéPanier);
         oursInfoQuantPanier.appendChild(oursQuantitéPanier);
         oursInfoQuantPanier.appendChild(plusQuantitéPanier);
+        // les enfants appartenant à oursPrice
+        oursPrice.appendChild(oursPricePanier)
+        oursPrice.appendChild(oursPricePanierUnit)
+        oursPrice.appendChild(oursPricePanierT)
+        oursPrice.appendChild(oursPricePanierTotal)
+
         //articlePanier est enfant de l'élément HTML avec l'ID panierClient
         document.getElementById('panierClient').appendChild(articlePanier);
 
@@ -133,8 +148,7 @@ if (product) {
 
 
     // import d'un séparateur pour délimiter les articles du formulaire
-    let separateur = document.createElement('img');
-    separateur.setAttribute('src', ' images/line.png ');
+    let separateur = document.createElement('div');
     separateur.classList.add('separateur');
 
     //création du formulaire

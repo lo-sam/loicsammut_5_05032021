@@ -24,8 +24,7 @@ promise.then(response => {
         // Nom du produit //
         let oursName = document.createElement('div');
         oursName.classList.add('name');
-        oursName.textContent = 'Nom: ' +
-            ours.name;
+        oursName.textContent = ours.name;
 
         // description du produit //
         let oursDescriptionTitle = document.createElement('div');
